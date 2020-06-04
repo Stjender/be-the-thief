@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1306237709015556830
+--- !u!1 &6828332203135357717
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,13 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1306237709015556817}
-  - component: {fileID: 1306237709015556818}
-  - component: {fileID: 1306237709015556819}
-  - component: {fileID: 1306237709015556828}
-  - component: {fileID: 1306237709015556829}
-  - component: {fileID: 1306237709015556816}
-  - component: {fileID: 1306237709015556823}
+  - component: {fileID: 6828332203135357722}
+  - component: {fileID: 6828332203135357721}
+  - component: {fileID: 6828332203135357720}
+  - component: {fileID: 6828332203135357719}
+  - component: {fileID: 6828332203135357718}
+  - component: {fileID: 6828332203135357723}
+  - component: {fileID: 6828332203135357724}
   m_Layer: 11
   m_Name: Gem
   m_TagString: Untagged
@@ -22,13 +22,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1306237709015556817
+--- !u!4 &6828332203135357722
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.25, y: 6.99, z: 5.64}
   m_LocalScale: {x: 0.72615206, y: 0.4080123, z: 0.53488}
@@ -36,21 +36,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1306237709015556818
+--- !u!33 &6828332203135357721
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1306237709015556819
+--- !u!23 &6828332203135357720
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,26 +81,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1306237709015556828
+--- !u!65 &6828332203135357719
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.0785692, y: 2.3372357, z: 2.1774888}
   m_Center: {x: 0.004794132, y: 0.6686177, z: -0.031594653}
---- !u!54 &1306237709015556829
+--- !u!54 &6828332203135357718
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -110,35 +110,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1306237709015556816
+--- !u!114 &6828332203135357723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0deb10d4e3667e41ba10a92a9684c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 3
-  itemName: Gem
-  itemType: 3
-  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  itemDescription: It's a Gem!
-  itemSize: 1
-  equipped: 0
-  hotbarID: -1
-  EquippedItem: {fileID: 0}
-  EquipmentManager: {fileID: 0}
---- !u!65 &1306237709015556823
+  _Image: {fileID: 0}
+--- !u!65 &6828332203135357724
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306237709015556830}
+  m_GameObject: {fileID: 6828332203135357717}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
