@@ -5,13 +5,9 @@
     "com.unity.collab-proxy": "1.2.15",
     "com.unity.package-manager-ui": "2.0.8",
     "com.unity.postprocessing": "2.3.0",
-<<<<<<< HEAD
-    "com.unity.purchasing": "2.0.3",
-=======
     "com.unity.probuilder": "4.2.3",
     "com.unity.purchasing": "2.0.3",
     "com.unity.shadergraph": "4.10.0-preview",
->>>>>>> 0dff0174b2e2c943a35632c1431f19423613fc41
     "com.unity.textmeshpro": "1.4.1",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
