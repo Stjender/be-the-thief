@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &431978678681080760
+--- !u!1 &7668376638428034109
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 431978678681080759}
-  - component: {fileID: 431978678681080756}
-  - component: {fileID: 431978678681080757}
-  - component: {fileID: 431978678681080762}
-  - component: {fileID: 431978678681080763}
-  - component: {fileID: 431978678681080758}
-  - component: {fileID: 431978678681080753}
+  - component: {fileID: 7668376638428034102}
+  - component: {fileID: 7668376638428034103}
+  - component: {fileID: 7668376638428034104}
+  - component: {fileID: 7668376638428034105}
+  - component: {fileID: 7668376638428034106}
+  - component: {fileID: 7668376638428034107}
+  - component: {fileID: 7668376638428034108}
   m_Layer: 11
-  m_Name: Gem
+  m_Name: Tool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &431978678681080759
+--- !u!4 &7668376638428034102
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.25, y: 6.99, z: 5.64}
-  m_LocalScale: {x: 0.72615206, y: 0.4080123, z: 0.53488}
+  m_LocalPosition: {x: -3.52, y: 6.99, z: -2.91}
+  m_LocalScale: {x: 0.72615206, y: 0.11795228, z: 0.1461827}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &431978678681080756
+--- !u!33 &7668376638428034103
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &431978678681080757
+--- !u!23 &7668376638428034104
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,26 +81,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &431978678681080762
+--- !u!65 &7668376638428034105
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0785692, y: 2.3372357, z: 2.1774888}
-  m_Center: {x: 0.004794132, y: 0.6686177, z: -0.031594653}
---- !u!54 &431978678681080763
+  m_Size: {x: 2.0785692, y: 3.286634, z: 2.1774886}
+  m_Center: {x: 0.004794132, y: 0.1939177, z: -0.031594608}
+--- !u!54 &7668376638428034106
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -110,38 +110,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &431978678681080758
+--- !u!114 &7668376638428034107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 129a157806848cb4eb832b28f3678303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
-  itemName: Gem
-  itemType: 3
-  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  itemDescription: Gem
+  itemID: 3
+  itemName: Tool
+  itemType: 0
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemDescription: Tool
   itemSize: 1
   equipped: 0
   hotbarID: -1
   EquippedItem: {fileID: 0}
   EquipmentManager: {fileID: 0}
---- !u!65 &431978678681080753
+--- !u!65 &7668376638428034108
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431978678681080760}
+  m_GameObject: {fileID: 7668376638428034109}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.0674316, z: 1.0625267}
+  m_Center: {x: -0.0039137113, y: 0.0031937074, z: -0.0071142605}
