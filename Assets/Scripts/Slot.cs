@@ -2,37 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public GameObject Item;
+    public Item item;
     public int Id;
-    public ItemTypes Type;
-    public string Description;
-    public Sprite Icon;
-    public int HotbarId;
 
-    public Slot ItemtoSlot(Item item)
+    //moet nog naar gekeken worden
+    public bool isSelected;
+    public GameObject slotHolder;
+
+    public void ShowItemInSlot()
     {
         if (item != null)
         {
-            this.Item = item.gameObject;
+            this.GetComponent<Image>().sprite = item.icon;
         }
-        this.Id = item.ItemID;
-        this.Type = item.Type;
-        this.Icon = item.Icon;
-        this.Description = item.ItemDescription;
-        this.HotbarId = item.HotbarID;
-        return this;
+        else
+        {
+            this.GetComponent<Image>().sprite = slotHolder.GetComponent<Image>().sprite;
+        }
     }
 
-    public void ResetSlot()
+    //moet nog naar gekeken worden
+    public void SlotClick()
     {
-        this.Item = null;
-        this.Id = 0;
-        this.Type = 0;
-        this.Icon = null;
-        this.Description = null;
-        this.HotbarId = 0;
+        this.isSelected = !this.isSelected;
+
+        List<GameObject> slots = new List<GameObject>();
+        Transform parent = transform.parent;
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform tempChild = parent.GetChild(i);
+            Slot tempChildSlot = tempChild.GetComponent<Slot>();
+            if (tempChildSlot.isSelected && tempChild != transform)
+            {
+                Item currentItem = item;
+                item = tempChild.GetComponent<Slot>().item;
+                tempChildSlot.item = currentItem;
+                isSelected = false;
+                tempChildSlot.isSelected = false;
+                ShowItemInSlot();
+                tempChildSlot.ShowItemInSlot();
+            }
+        }
     }
 }

@@ -7,14 +7,14 @@ public class ItemUse : MonoBehaviour
 {
     public void UseTool(Item item, GameObject Object)
     {
-        if (item.Name == "Tool")
+        if (item.itemName == "Tool")
         {
             Object.SetActive(false);
         }
     }
     public void UseFood(Item item)
     {
-        if (item.Name == "Apple")
+        if (item.itemName == "Apple")
         {
 
         }
