@@ -27,6 +27,8 @@ public class Item : MonoBehaviour
     [HideInInspector]
     public GameObject EquipmentManager;
 
+    private ItemUse itemUse;
+
     public void Start()
     {
         EquipmentManager = GameObject.FindWithTag("EquipManager");
@@ -45,9 +47,16 @@ public class Item : MonoBehaviour
         equipped = true;
         gameObject.SetActive(false);
     }
-    
-    public void OnUse()
-    {
 
+    public void OnUse(GameObject Object)
+    {
+        if (this.itemType == ItemTypes.Tool)
+        {
+            itemUse.UseTool(this, Object);
+        }
+        if (this.itemType == ItemTypes.Food)
+        {
+            itemUse.UseFood(this);
+        }
     }
 }

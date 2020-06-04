@@ -23,7 +23,10 @@ ModelImporter:
     4300000: TV
     4300002: Stand
     10800000: Point
+<<<<<<< HEAD
     2186277476908879412: ImportLogs
+=======
+>>>>>>> 0dff0174b2e2c943a35632c1431f19423613fc41
   externalObjects: {}
   materials:
     importMaterials: 1
