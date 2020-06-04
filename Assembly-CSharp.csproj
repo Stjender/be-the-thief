@@ -91,6 +91,12 @@
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>C:/Users/stan/Desktop/School/S3/Specialisatie/Inbraak App/Git/be-the-thief/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/stan/Desktop/School/S3/Specialisatie/Inbraak App/Git/be-the-thief/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/stan/Desktop/School/S3/Specialisatie/Inbraak App/Git/be-the-thief/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -292,14 +298,8 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Users/stan/Desktop/School/S3/Specialisatie/Inbraak App/Git/be-the-thief/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>C:/Users/stan/Desktop/School/S3/Specialisatie/Inbraak App/Git/be-the-thief/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/stan/Desktop/School/S3/Specialisatie/Inbraak App/Git/be-the-thief/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
