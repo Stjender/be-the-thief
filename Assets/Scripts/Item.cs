@@ -12,23 +12,20 @@ public enum ItemTypes
 }
 public class Item : MonoBehaviour
 {
-
-    public int ItemID;
-    public string Name;
-    public ItemTypes Type;
-    public Sprite Icon;
-    public string ItemDescription;
-    public int Size;
-    public bool Equipped;
-    public int HotbarID = -1;
+    
+    public int itemID;
+    public string itemName;
+    public ItemTypes itemType;
+    public Sprite icon;
+    public string itemDescription;
+    public int itemSize;
+    public bool equipped;
+    public int hotbarID = -1;
 
     [HideInInspector]
     public GameObject EquippedItem;
     [HideInInspector]
     public GameObject EquipmentManager;
-
-    //NIEUW
-    private ItemUse itemUse;
 
     public void Start()
     {
@@ -37,7 +34,7 @@ public class Item : MonoBehaviour
 
     public void Update()
     {
-        if (Equipped)
+        if (equipped)
         {
 
         }
@@ -45,21 +42,12 @@ public class Item : MonoBehaviour
 
     public void OnPickup()
     {
-        Equipped = true;
+        equipped = true;
         gameObject.SetActive(false);
     }
-    //NIEUW
-    public void OnUse(GameObject Object)
+    
+    public void OnUse()
     {
-        if (this.Type == ItemTypes.Tool)
-        {
-            itemUse.UseTool(this, Object);
-        }
-        if (this.Type == ItemTypes.Food)
-        {
-            itemUse.UseFood(this);
-        }
+
     }
-
-
 }

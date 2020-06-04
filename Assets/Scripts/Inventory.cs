@@ -8,19 +8,19 @@ public class Inventory : MonoBehaviour
 {
     public int hotbarSlots;
     public GameObject[] slots;
-    public SlotHolder slotHolder;
+    public SlotHolder hotbarSlotArea;
+    public SlotHolder inventorySlotArea;
     public Hud hud;
     public LoadHudSlots inventorySlots;
     public GameObject equipmentManager;
     public KeyCode dropKey = KeyCode.G;
     public KeyCode interactObjectButton = KeyCode.Mouse0;
 
+    public GameObject backpackObject;
+
     private List<KeyCode> hotbarcodes;
     private int hotbarKey = 1;
-    private int lastHotbarPress = 1;
     private GameObject EquippedItem = null;
-    private bool equipped = false;
-    private ObjectCheck objectChecker;
 
 
     private void Start()
@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
         InitializeHotbar();
         for (int i = 0; i < hotbarSlots; i++)
         {
-            slots[i] = slotHolder.transform.GetChild(i).gameObject;
+            slots[i] = hotbarSlotArea.transform.GetChild(i).gameObject;
         }
     }
 
@@ -41,21 +41,60 @@ public class Inventory : MonoBehaviour
 
     public void PickupItem(GameObject item)
     {
-        if (CheckIfItemEquipped() && EquippedItem.GetComponent<Item>().Type != ItemTypes.Tool)
+        if (CheckIfItemEquipped() && EquippedItem.GetComponent<Item>().itemType != ItemTypes.Tool)
         {
             Debug.Log("not tool");
             return;
         }
-        else if (CheckIfItemEquipped() && EquippedItem.GetComponent<Item>().Type == ItemTypes.Tool)
+        else if (CheckIfItemEquipped() && EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
         {
             Debug.Log("is tool");
             UnEquipItem();
         }
         PutItemInHotbar(item);
     }
+    private void PutItemInHotbar(GameObject item)
+    {
+        Item currentItem = item.GetComponent<Item>();
+        for (int i = 0; i < hotbarSlots; i++)
+        {
+            if (slots[i].GetComponent<Slot>().item == null)
+            {
+                Slot openSlot = slots[i].GetComponent<Slot>();
+                currentItem.hotbarID = i;
+
+                openSlot.item = currentItem;
+                openSlot.ShowItemInSlot();
+
+                item.transform.SetParent(slots[i].transform);
+                currentItem.OnPickup();
+                Debug.Log(i);
+                EquipItem(i);
+                return;
+            }
+        }
+    }
+    private void EquipItem(int slotnumber)
+    {
+        if (slots[slotnumber].GetComponent<Slot>().item != null)
+        {
+            var itemName = slots[slotnumber].GetComponent<Slot>().item.itemName;
+            if (slots[slotnumber].GetComponent<Slot>().item.itemName.Contains("(Clone)"))
+            {
+                var index = slots[slotnumber].GetComponent<Slot>().item.itemName.IndexOf("(");
+                itemName = slots[slotnumber].GetComponent<Slot>().item.itemName.Substring(0, index);
+            }
+            Debug.Log(slots[slotnumber].GetComponent<Slot>().item.itemName);
+            EquippedItem = equipmentManager.transform.Find(itemName).gameObject;
+            Debug.Log(slotnumber);
+            EquippedItem.GetComponent<Item>().hotbarID = slotnumber;
+            Destroy(EquippedItem.gameObject.GetComponent<Rigidbody>());
+            equipmentManager.transform.Find(EquippedItem.name).gameObject.SetActive(true);
+        }
+    }
     private void CheckHotbarInput()
     {
-        if (!equipped)
+        if (!CheckIfItemEquipped())
         {
             foreach (var key in hotbarcodes)
             {
@@ -64,7 +103,7 @@ public class Inventory : MonoBehaviour
                     hotbarKey = Convert.ToInt32(key.ToString().Substring(5));
                     if (GetItemByHotbarId(hotbarKey) != null)
                     {
-                        EquipItem(hotbarKey - 1, GetItemByHotbarId(hotbarKey));
+                        EquipItem(hotbarKey - 1);
                     }
                     return;
                 }
@@ -75,7 +114,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKey(dropKey) && EquippedItem != null)
         {
-            var hotbarId = EquippedItem.GetComponent<Item>().HotbarID + 1;
+            var hotbarId = EquippedItem.GetComponent<Item>().hotbarID + 1;
             Debug.Log(hotbarId);
             string panelString = "Panel";
             if (CheckIfItemEquipped())
@@ -84,7 +123,7 @@ public class Inventory : MonoBehaviour
             }
             else return;
             Debug.Log(panelString);
-            foreach (Transform child in slotHolder.transform.Find(panelString))
+            foreach (Transform child in hotbarSlotArea.transform.Find(panelString))
             {
                 if (!child.gameObject.name.Contains("Panel"))
                 {
@@ -95,9 +134,8 @@ public class Inventory : MonoBehaviour
                         child.gameObject.name = itemName;
                     }
                     Instantiate(child.gameObject, equipmentManager.transform.position, equipmentManager.transform.rotation).SetActive(true);
-                    slotHolder.transform.Find(panelString).GetComponent<Image>().sprite = slotHolder.GetComponent<Image>().sprite;
+                    hotbarSlotArea.transform.Find(panelString).GetComponent<Image>().sprite = hotbarSlotArea.GetComponent<Image>().sprite;
                     EquippedItem.SetActive(false);
-                    equipped = false;
                     Destroy(child.gameObject);
                 }
             }
@@ -111,45 +149,25 @@ public class Inventory : MonoBehaviour
         }
         else return false;
     }
-    private void EquipItem(int slotnumber, Item item)
-    {
-        if (slots[slotnumber].GetComponent<Slot>().Item != null)
-        {
-            var itemName = slots[slotnumber].GetComponent<Slot>().Item.name;
-            if (slots[slotnumber].GetComponent<Slot>().Item.name.Contains("(Clone)"))
-            {
-                var index = slots[slotnumber].GetComponent<Slot>().Item.name.IndexOf("(");
-                itemName = slots[slotnumber].GetComponent<Slot>().Item.name.Substring(0, index);
-            }
-            Debug.Log(slots[slotnumber].GetComponent<Slot>().Item.name);
-            EquippedItem = equipmentManager.transform.Find(itemName).gameObject;
-            Debug.Log(slotnumber);
-            EquippedItem.GetComponent<Item>().HotbarID = slotnumber;
-            Destroy(EquippedItem.gameObject.GetComponent<Rigidbody>());
-            equipmentManager.transform.Find(EquippedItem.name).gameObject.SetActive(true);
-            lastHotbarPress = slotnumber;
-            equipped = true;
-        }
-    }
     private Item GetItemByHotbarId(int hotbarId)
     {
-        if (slots[hotbarId - 1].GetComponent<Slot>().Item != null)
+        Item itemToCheck = slots[hotbarId - 1].GetComponent<Slot>().item;
+        if (itemToCheck != null)
         {
-            return slots[hotbarId - 1].GetComponent<Slot>().Item.GetComponent<Item>();
+            return itemToCheck;
         }
         else return null;
     }
     private void UnEquipItem()
     {
         EquippedItem.SetActive(false);
-        equipped = false;
         hotbarKey = 0;
     }
     private void InteractWithObject()
     {
         if (Input.GetKey(interactObjectButton) && EquippedItem != null)
         {
-            switch (EquippedItem.GetComponent<Item>().Type)
+            switch (EquippedItem.GetComponent<Item>().itemType)
             {
                 case ItemTypes.Tool:
                     break;
@@ -161,23 +179,6 @@ public class Inventory : MonoBehaviour
                     break;
                 default:
                     break;
-            }
-        }
-    }
-    private void PutItemInHotbar(GameObject item)
-    {
-        for (int i = 0; i < hotbarSlots; i++)
-        {
-            if (slots[i].GetComponent<Slot>().Item == null)
-            {
-                item.GetComponent<Item>().HotbarID = i;
-                slots[i].GetComponent<Slot>().ItemtoSlot(item.GetComponent<Item>());
-                slots[i].GetComponent<Slot>().GetComponent<Image>().sprite = item.GetComponent<Item>().Icon;
-                item.transform.SetParent(slots[i].transform);
-                item.GetComponent<Item>().OnPickup();
-                Debug.Log(i);
-                EquipItem(i, item.GetComponent<Item>());
-                return;
             }
         }
     }
@@ -195,8 +196,33 @@ public class Inventory : MonoBehaviour
             KeyCode.Alpha8
         };
     }
-    private void UseItem()
+
+    public void AddBackpack(GameObject collectedBagpack)
     {
-        EquippedItem.GetComponent<Item>().OnUse(objectChecker.currentItem);
+        if (backpackObject != null)
+        {
+            RemoveBackPack();
+        }
+        backpackObject = collectedBagpack;
+        collectedBagpack.SetActive(false);
+
+        Backpack backpack = backpackObject.GetComponent<Backpack>();
+
+        foreach (var slot in backpack.slots)
+        {
+            slot.transform.SetParent(inventorySlotArea.transform);
+        }
+    }
+
+    public void RemoveBackPack()
+    {
+        Backpack backpack = backpackObject.GetComponent<Backpack>();
+
+        foreach (var slot in backpack.slots)
+        {
+            slot.transform.SetParent(backpack.transform);
+        }
+        backpack.gameObject.SetActive(true);
     }
 }
+

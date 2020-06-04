@@ -10,11 +10,11 @@ public class ObjectCheck : MonoBehaviour
     public float Reach = 10f;
     public Hud HUD;
     public LayerMask ItemLayer;
+    public string backpackTag;
     public KeyCode UseKey = KeyCode.F;
     public PlayerController player;
     private float itemlayer;
-    private bool useKeyPressed = false;
-    public GameObject currentItem;
+    private GameObject currentItem;
 
     // Start is called before the first frame update
     void Start()
@@ -36,17 +36,20 @@ public class ObjectCheck : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (hit.distance < Reach)
             {
-                if (hit.transform.gameObject.layer == itemlayer)
+                currentItem = hit.transform.gameObject;
+                if (currentItem.layer == itemlayer)
                 {
-                    currentItem = hit.transform.gameObject;
-                    if (currentItem != null)
+
+                    if (currentItem.GetComponent<Item>() != null)
                     {
-                        if (currentItem.GetComponent<Item>() != null)
-                        {
-                            HUD.OpenMessagePanel(currentItem.GetComponent<Item>().Name);
-                        }
-                        CheckInput();
+                        HUD.OpenMessagePanel(currentItem.GetComponent<Item>().itemName);
                     }
+                    CheckInput();
+                }
+                else if (currentItem.tag == backpackTag)
+                {
+                    HUD.OpenMessagePanel("backpack");
+                    CheckInput();
                 }
             }
             else
@@ -59,14 +62,16 @@ public class ObjectCheck : MonoBehaviour
     {
         if (Input.GetKey(UseKey))
         {
-            useKeyPressed = true;
-        }
-        if (useKeyPressed && currentItem != null)
-        {
-            player.inventory.PickupItem(currentItem);
+            if (currentItem.layer == itemlayer)
+            {
+                player.inventory.PickupItem(currentItem);
+            }
+            else if (currentItem.tag == backpackTag)
+            {
+                player.inventory.AddBackpack(currentItem);
+            }
             HUD.CloseMessagePanel();
         }
-        useKeyPressed = false;
     }
 }
 
