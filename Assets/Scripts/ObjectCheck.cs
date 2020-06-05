@@ -2,7 +2,7 @@
 
 public class ObjectCheck : MonoBehaviour
 {
-    public float Reach = 10f;
+    public float Reach = 3f;
     public Hud HUD;
     public LayerMask ItemLayer;
     public string backpackTag;

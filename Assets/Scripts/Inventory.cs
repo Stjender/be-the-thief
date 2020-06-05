@@ -154,7 +154,7 @@ public class Inventory : MonoBehaviour
                 }
             }*/
 
-            Instantiate(EquippedItem.gameObject, EquippedItem.transform.position, EquippedItem.transform.rotation);
+            Instantiate(currentSlot.GetComponent<Slot>().item.gameObject, EquippedItem.transform.position, EquippedItem.transform.rotation).SetActive(true);
             EquippedItem.SetActive(false);
             Destroy(currentSlot.GetComponent<Slot>().item.gameObject);
         }
