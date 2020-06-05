@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     public KeyCode dropKey = KeyCode.G;
     public KeyCode interactObjectButton = KeyCode.Mouse0;
     public KeyCode inventoryKey = KeyCode.E;
+    public KeyCode dropBackpackKey = KeyCode.Q;
 
     public GameObject backpackObject;
 
@@ -36,6 +37,7 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         CheckHotbarInput();
+        CheckInput();
         CheckDrop();
         ToggleInventory();
     }
@@ -109,6 +111,13 @@ public class Inventory : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+    private void CheckInput()
+    {
+        if(Input.GetKeyDown(dropBackpackKey))
+        {
+            RemoveBackPack();
         }
     }
     private void CheckDrop()
