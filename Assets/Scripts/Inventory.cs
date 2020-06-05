@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     public GameObject equipmentManager;
     public KeyCode dropKey = KeyCode.G;
     public KeyCode interactObjectButton = KeyCode.Mouse0;
+    public KeyCode inventoryKey = KeyCode.E;
 
     public GameObject backpackObject;
 
@@ -36,6 +37,7 @@ public class Inventory : MonoBehaviour
     {
         CheckHotbarInput();
         CheckDrop();
+        ToggleInventory();
     }
 
     public void PickupItem(GameObject item)
@@ -222,5 +224,21 @@ public class Inventory : MonoBehaviour
             slot.transform.SetParent(backpack.transform);
         }
         backpack.gameObject.SetActive(true);
+    }
+
+    private void ToggleInventory()
+    {
+        if (Input.GetKeyDown(inventoryKey))
+        {
+            Debug.Log("Inventory key pressed");
+            if (inventorySlotArea.gameObject.activeSelf)
+            {
+                inventorySlotArea.gameObject.SetActive(false);
+            }
+            else if (!inventorySlotArea.gameObject.activeSelf)
+            {
+                inventorySlotArea.gameObject.SetActive(true);
+            }
+        }
     }
 }
