@@ -28,13 +28,12 @@ public class ObjectCheck : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (hit.distance < Reach)
             {
                 currentItem = hit.transform.gameObject;
                 if (currentItem.layer == itemlayer)
                 {
-
                     if (currentItem.GetComponent<Item>() != null)
                     {
                         HUD.OpenMessagePanel(currentItem.GetComponent<Item>().itemName);
@@ -46,6 +45,11 @@ public class ObjectCheck : MonoBehaviour
                     HUD.OpenMessagePanel("backpack");
                     CheckInput();
                 }
+                else if (currentItem.GetComponent<Item>() == null && currentItem.tag != backpackTag)
+                {
+                    HUD.CloseMessagePanel();
+                }
+                Debug.Log(currentItem);
             }
             else
             {
