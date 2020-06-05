@@ -28,7 +28,7 @@ public class ObjectCheck : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (hit.distance < Reach)
             {
                 currentItem = hit.transform.gameObject;
@@ -49,7 +49,6 @@ public class ObjectCheck : MonoBehaviour
                 {
                     HUD.CloseMessagePanel();
                 }
-                Debug.Log(currentItem);
             }
             else
             {
