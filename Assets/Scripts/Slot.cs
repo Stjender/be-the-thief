@@ -11,7 +11,7 @@ public class Slot : MonoBehaviour
 
     //moet nog naar gekeken worden
     public bool isSelected;
-    public GameObject slotHolder;
+    public Sprite baseImage;
 
     public void ShowItemInSlot()
     {
@@ -21,7 +21,7 @@ public class Slot : MonoBehaviour
         }
         else
         {
-            this.GetComponent<Image>().sprite = slotHolder.GetComponent<Image>().sprite;
+            this.GetComponent<Image>().sprite = baseImage;
         }
     }
 

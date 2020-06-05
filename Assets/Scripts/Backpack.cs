@@ -22,7 +22,6 @@ public class Backpack : MonoBehaviour
             GameObject tempSlot = Instantiate(slotGameObject);
             tempSlot.transform.SetParent(transform);
             slots.Add(tempSlot);
-
         }
     }
 
