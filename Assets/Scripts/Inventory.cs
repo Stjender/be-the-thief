@@ -40,9 +40,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        CheckHotbarInput();
         CheckInput();
-        ToggleInventory();
     }
 
     public void PickupItem(GameObject item)
@@ -124,36 +122,17 @@ public class Inventory : MonoBehaviour
         {
             CheckDrop();
         }
+        else if (Input.GetKeyDown(inventoryKey))
+        {
+            ToggleInventory();
+        }
+        CheckHotbarInput();
     }
 
     private void CheckDrop()
     {
         if (CheckIfItemEquipped())
         {
-            /*var hotbarId = EquippedItem.GetComponent<Item>().hotbarID + 1;
-            Debug.Log(hotbarId);
-            string panelString = "Panel";
-            panelString += " (" + hotbarId + ")";
-            Debug.Log(panelString);
-
-            foreach (Transform child in hotbarSlotArea.transform.Find(panelString))
-            {
-                if (!child.gameObject.name.Contains("Panel"))
-                {
-                    if (child.gameObject.name.Contains("(Clone)"))
-                    {
-                        var index = child.gameObject.name.IndexOf("(");
-                        var itemName = child.gameObject.name.Substring(0, index);
-                        child.gameObject.name = itemName;
-                    }
-
-                    Instantiate(child.gameObject, equipmentManager.transform.position, equipmentManager.transform.rotation).SetActive(true);
-                    hotbarSlotArea.transform.Find(panelString).GetComponent<Image>().sprite = hotbarSlotArea.GetComponent<Image>().sprite;
-                    EquippedItem.SetActive(false);
-                    Destroy(child.gameObject);
-                }
-            }*/
-
             Instantiate(currentSlot.GetComponent<Slot>().item.gameObject, EquippedItem.transform.position, EquippedItem.transform.rotation).SetActive(true);
             EquippedItem.SetActive(false);
             Destroy(currentSlot.GetComponent<Slot>().item.gameObject);
@@ -245,17 +224,16 @@ public class Inventory : MonoBehaviour
 
     private void ToggleInventory()
     {
-        if (Input.GetKeyDown(inventoryKey))
+        Debug.Log("Inventory key pressed");
+        if (inventorySlotArea.gameObject.activeSelf)
         {
-            Debug.Log("Inventory key pressed");
-            if (inventorySlotArea.gameObject.activeSelf)
-            {
-                inventorySlotArea.gameObject.SetActive(false);
-            }
-            else if (!inventorySlotArea.gameObject.activeSelf)
-            {
-                inventorySlotArea.gameObject.SetActive(true);
-            }
+            inventorySlotArea.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if (!inventorySlotArea.gameObject.activeSelf)
+        {
+            inventorySlotArea.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
