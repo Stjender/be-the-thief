@@ -25,28 +25,21 @@ public class Slot : MonoBehaviour
         }
     }
 
+    public void SetItem(Item itemToSet)
+    {
+        item = itemToSet;
+        ShowItemInSlot();
+        if (itemToSet != null)
+        {
+            Debug.Log(itemToSet.itemName);
+            itemToSet.transform.SetParent(transform);
+        }
+    }
+
     //moet nog naar gekeken worden
     public void SlotClick()
     {
-        this.isSelected = !this.isSelected;
-
-        List<GameObject> slots = new List<GameObject>();
-        Transform parent = transform.parent;
-
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            Transform tempChild = parent.GetChild(i);
-            Slot tempChildSlot = tempChild.GetComponent<Slot>();
-            if (tempChildSlot.isSelected && tempChild != transform)
-            {
-                Item currentItem = item;
-                item = tempChild.GetComponent<Slot>().item;
-                tempChildSlot.item = currentItem;
-                isSelected = false;
-                tempChildSlot.isSelected = false;
-                ShowItemInSlot();
-                tempChildSlot.ShowItemInSlot();
-            }
-        }
+        isSelected = !isSelected;
+        Debug.Log("slot pressed");
     }
 }
