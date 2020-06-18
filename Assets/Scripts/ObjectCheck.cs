@@ -6,6 +6,7 @@ public class ObjectCheck : MonoBehaviour
     public Hud HUD;
     public LayerMask ItemLayer;
     public string backpackTag;
+    public string interactiveObjectTag;
     public KeyCode UseKey = KeyCode.F;
     public PlayerController player;
     private float itemlayer;
@@ -38,17 +39,23 @@ public class ObjectCheck : MonoBehaviour
                     {
                         HUD.OpenMessagePanel(currentItem.GetComponent<Item>().itemName);
                     }
-                    CheckInput();
+                    CheckInput(currentItem);
                 }
                 else if (currentItem.tag == backpackTag)
                 {
                     HUD.OpenMessagePanel("backpack");
-                    CheckInput();
+                    CheckInput(currentItem);
+                }
+                else if (currentItem.GetComponent<Item>() == null && currentItem.tag == interactiveObjectTag)
+                {
+                    HUD.OpenInteractMessagePanel(currentItem.name);
+                    CheckInput(currentItem);
                 }
                 else if (currentItem.GetComponent<Item>() == null && currentItem.tag != backpackTag)
                 {
                     HUD.CloseMessagePanel();
                 }
+                
             }
             else
             {
@@ -56,17 +63,22 @@ public class ObjectCheck : MonoBehaviour
             }
         }
     }
-    public void CheckInput()
+    public void CheckInput(GameObject obj)
     {
         if (Input.GetKey(UseKey))
         {
-            if (currentItem.layer == itemlayer)
+            if (obj.layer == itemlayer)
             {
-                player.inventory.PickupItem(currentItem);
+                player.inventory.PickupItem(obj);
             }
-            else if (currentItem.tag == backpackTag)
+            else if (obj.tag == backpackTag)
             {
-                player.inventory.AddBackpack(currentItem);
+                player.inventory.AddBackpack(obj);
+            }
+            else if (obj.tag == interactiveObjectTag)
+            {
+                player.inventory.InteractWithObject(obj);
+                Debug.Log("Hello world");
             }
             HUD.CloseMessagePanel();
         }

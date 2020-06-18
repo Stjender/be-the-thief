@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     public Hud hud;
     public GameObject equipmentManager;
     public KeyCode dropKey = KeyCode.G;
-    public KeyCode interactObjectButton = KeyCode.Mouse0;
+    public KeyCode interactObjectButton = KeyCode.F;
     public KeyCode inventoryKey = KeyCode.E;
     public KeyCode dropBackpackKey = KeyCode.Q;
 
@@ -181,23 +181,11 @@ public class Inventory : MonoBehaviour
         EquippedItem.SetActive(false);
         hotbarKey = 0;
     }
-    private void InteractWithObject()
+    public void InteractWithObject(GameObject gameobject)
     {
         if (Input.GetKey(interactObjectButton) && EquippedItem != null)
         {
-            switch (EquippedItem.GetComponent<Item>().itemType)
-            {
-                case ItemTypes.Tool:
-                    break;
-                case ItemTypes.Weapon:
-                    break;
-                case ItemTypes.Food:
-                    break;
-                case ItemTypes.Object:
-                    break;
-                default:
-                    break;
-            }
+            EquippedItem.GetComponent<Item>().OnUse(gameobject);
         }
     }
     private void InitializeHotbar()

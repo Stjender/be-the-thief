@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EquipManager
   - Backpack
+  - InteractiveObject
   layers:
   - Default
   - TransparentFX
