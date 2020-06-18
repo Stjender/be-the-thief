@@ -12,7 +12,7 @@ public enum ItemTypes
 }
 public class Item : MonoBehaviour
 {
-
+    private ItemUse itemUse;
     public int itemID;
     public string itemName;
     public ItemTypes itemType;
@@ -46,8 +46,20 @@ public class Item : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void OnUse()
+    public void OnUse(GameObject Object)
     {
-
+        itemUse = new ItemUse();
+        if (this.itemType == ItemTypes.Tool)
+        {
+            itemUse.UseTool(this, Object);
+        }
+        if (this.itemType == ItemTypes.Food)
+        {
+            itemUse.UseFood(this);
+        }
+        if (Object.GetComponent<Door>() != null)
+        {
+            Object.GetComponent<Door>().openDoor();
+        }
     }
 }

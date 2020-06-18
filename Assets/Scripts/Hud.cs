@@ -26,6 +26,14 @@ public class Hud : MonoBehaviour
         InteractionText.text += text;
     }
 
+    public void OpenInteractMessagePanel(string text)
+    {
+        InteractionText.text = "Press F to interact with";
+        MessagePanel.SetActive(true);
+        text = " " + text;
+        InteractionText.text += text;
+    }
+
     public void CloseMessagePanel()
     {
         MessagePanel.SetActive(false);
