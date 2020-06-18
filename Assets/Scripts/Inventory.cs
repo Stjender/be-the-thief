@@ -236,4 +236,20 @@ public class Inventory : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
+
+    private void SwitchItems()
+    {
+        if(inventorySlotArea.gameObject.activeSelf)
+        {
+            List<Slot> selectedSlots = new List<Slot>();
+            foreach (var slot in hotbarSlots)
+            {
+                selectedSlots.Add(slot.GetComponent<Slot>());
+            }
+            foreach (var slot in backpackObject.GetComponent<Backpack>().slots)
+            {
+                selectedSlots.Add(slot.GetComponent<Slot>());
+            }
+        }
+    }
 }
