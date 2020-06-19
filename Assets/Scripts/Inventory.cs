@@ -209,6 +209,7 @@ public class Inventory : MonoBehaviour
             slot.transform.SetParent(backpack.transform);
         }
         backpack.gameObject.SetActive(true);
+        backpack.transform.position = equipmentManager.transform.position;
     }
 
     private void ToggleInventory()
