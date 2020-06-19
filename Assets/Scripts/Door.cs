@@ -6,16 +6,16 @@ public class Door : MonoBehaviour
 {
     public Animator doorAnimator;
     public bool lockedDoor;
-    private bool open;
+    public bool open;
 
     public void openDoor()
     {
-        if (!open)
+        if (!open && !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("closing") || !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening"))
         {
             doorAnimator.SetTrigger("openDoor");
             open = true;
         }
-        else
+        else if(!doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("closing") || !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening"))
         {
             doorAnimator.ResetTrigger("openDoor");
             open = false;

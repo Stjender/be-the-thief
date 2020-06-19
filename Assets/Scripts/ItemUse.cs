@@ -11,7 +11,15 @@ public class ItemUse : MonoBehaviour
         {
             if (Object.GetComponent<Door>() != null)
             {
-                Object.GetComponent<Door>().openDoor();
+                if (!Object.GetComponent<Door>().open)
+                {
+                    item.animator.SetTrigger("activate");
+                    Object.GetComponent<Door>().openDoor();
+                }
+                else
+                {
+                    Object.GetComponent<Door>().openDoor();
+                }
             }
         }
     }
