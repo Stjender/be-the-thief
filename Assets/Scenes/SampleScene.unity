@@ -149,6 +149,8 @@ MonoBehaviour:
   inventorySlotArea: {fileID: 1597851583}
   hud: {fileID: 1966791957}
   equipmentManager: {fileID: 1604087001}
+  emptyItem: {fileID: 2687049707771020092, guid: fc7cf4c4d580ec44e87f97c821b9290c,
+    type: 3}
   dropKey: 103
   interactObjectButton: 102
   inventoryKey: 101

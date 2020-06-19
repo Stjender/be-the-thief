@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public SlotHolder inventorySlotArea;
     public Hud hud;
     public GameObject equipmentManager;
+    public GameObject emptyItem;
     public KeyCode dropKey = KeyCode.G;
     public KeyCode interactObjectButton = KeyCode.F;
     public KeyCode inventoryKey = KeyCode.E;
@@ -21,8 +22,9 @@ public class Inventory : MonoBehaviour
     private GameObject backpackObject;
 
     private List<KeyCode> hotbarcodes;
-    private GameObject EquippedItem = null;
+    private GameObject EquippedItem;
     private GameObject currentSlot;
+
 
 
     private void Start()
@@ -36,6 +38,7 @@ public class Inventory : MonoBehaviour
             hotbarSlots.Add(tempSlot);
         }
         currentSlot = hotbarSlotArea.transform.GetChild(0).gameObject;
+        EquippedItem = emptyItem;
     }
 
     private void Update()
@@ -63,16 +66,10 @@ public class Inventory : MonoBehaviour
 
     public void PickupItem(GameObject item)
     {
-        if (CheckIfItemEquipped() && EquippedItem.GetComponent<Item>().itemType != ItemTypes.Tool)
+        if (EquippedItem.GetComponent<Item>().itemSize < 2)
         {
-            Debug.Log("not tool");
-            return;
+            PutItemInHotbar(item);
         }
-        else if (CheckIfItemEquipped() && EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
-        {
-            Debug.Log("is tool");
-        }
-        PutItemInHotbar(item);
     }
 
     private void PutItemInHotbar(GameObject item)
@@ -100,7 +97,7 @@ public class Inventory : MonoBehaviour
         {
             EquippedItem.SetActive(false);
         }
-        if (item != null )
+        if (item != null)
         {
             foreach (var equipmentitem in equipmentManager.transform.GetComponentsInChildren<Item>(true))
             {
@@ -133,6 +130,7 @@ public class Inventory : MonoBehaviour
         {
             Instantiate(currentSlot.GetComponent<Slot>().item.gameObject, EquippedItem.transform.position, EquippedItem.transform.rotation).SetActive(true);
             EquippedItem.SetActive(false);
+            EquippedItem = emptyItem;
             Destroy(currentSlot.GetComponent<Slot>().item.gameObject);
             currentSlot.GetComponent<Slot>().SetItem(null);
         }
@@ -144,19 +142,6 @@ public class Inventory : MonoBehaviour
             return EquippedItem.activeSelf;
         }
         else return false;
-    }
-    private Item GetItemByHotbarId(int hotbarId)
-    {
-        Item itemToCheck = hotbarSlots[hotbarId - 1].GetComponent<Slot>().item;
-        if (itemToCheck != null)
-        {
-            return itemToCheck;
-        }
-        else return null;
-    }
-    private void UnEquipItem()
-    {
-        EquippedItem.SetActive(false);
     }
     public void InteractWithObject(GameObject gameobject)
     {
@@ -231,6 +216,7 @@ public class Inventory : MonoBehaviour
     {
         if (inventorySlotArea.gameObject.activeSelf)
         {
+
             List<Slot> selectedSlots = new List<Slot>();
 
             List<Slot> returnedHotberSlots = GetSelectedSlots(hotbarSlotArea.transform);
@@ -240,15 +226,19 @@ public class Inventory : MonoBehaviour
 
             if (selectedSlots.Count >= 2)
             {
-                Slot firstSlot = selectedSlots[0];
-                Slot secondSlot = selectedSlots[1];
-                Item itemToSet = firstSlot.item;
-                firstSlot.SetItem(secondSlot.item);
-                secondSlot.SetItem(itemToSet);
-                firstSlot.isSelected = false;
-                secondSlot.isSelected = false;
+                if (EquippedItem.GetComponent<Item>().itemSize < 2)
+                {
+                    Slot firstSlot = selectedSlots[0];
+                    Slot secondSlot = selectedSlots[1];
+                    Item itemToSet = firstSlot.item;
+                    firstSlot.SetItem(secondSlot.item);
+                    secondSlot.SetItem(itemToSet);
 
-                EquipItem(currentSlot.GetComponent<Slot>().item);
+                    EquipItem(currentSlot.GetComponent<Slot>().item);
+
+                }
+                DeselectAllSlots(hotbarSlotArea.transform);
+                DeselectAllSlots(inventorySlotArea.transform);
             }
         }
     }
@@ -266,5 +256,15 @@ public class Inventory : MonoBehaviour
             }
         }
         return selectedSlots;
+    }
+
+    private void DeselectAllSlots(Transform slotArea)
+    {
+        for (int i = 0; i < slotArea.childCount; i++)
+        {
+            Transform currentChild = slotArea.GetChild(i);
+            Slot currentChildSlot = currentChild.GetComponent<Slot>();
+            currentChildSlot.isSelected = false;
+        }
     }
 }
