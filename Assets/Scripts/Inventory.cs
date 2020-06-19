@@ -164,7 +164,10 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKey(interactObjectButton) && EquippedItem != null)
         {
-            EquippedItem.GetComponent<Item>().OnUse(gameobject);
+            if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
+            {
+                EquippedItem.GetComponent<Item>().OnUse(gameobject);
+            }
         }
     }
     private void InitializeHotbar()

@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = -2f;
             }
 
-
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 

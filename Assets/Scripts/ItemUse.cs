@@ -7,9 +7,12 @@ public class ItemUse : MonoBehaviour
 {
     public void UseTool(Item item, GameObject Object)
     {
-        if (item.itemName == "Tool")
+        if (item.itemType == ItemTypes.Tool)
         {
-            Object.SetActive(false);
+            if (Object.GetComponent<Door>() != null)
+            {
+                Object.GetComponent<Door>().openDoor();
+            }
         }
     }
     public void UseFood(Item item)

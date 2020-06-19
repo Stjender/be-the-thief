@@ -5,21 +5,20 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Animator doorAnimator;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool lockedDoor;
+    private bool open;
 
     public void openDoor()
     {
-        doorAnimator.SetTrigger("openDoor");
-        doorAnimator.ResetTrigger("openDoor");
+        if (!open)
+        {
+            doorAnimator.SetTrigger("openDoor");
+            open = true;
+        }
+        else
+        {
+            doorAnimator.ResetTrigger("openDoor");
+            open = false;
+        }
     }
 }

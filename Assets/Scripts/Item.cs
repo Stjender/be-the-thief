@@ -57,9 +57,5 @@ public class Item : MonoBehaviour
         {
             itemUse.UseFood(this);
         }
-        if (Object.GetComponent<Door>() != null)
-        {
-            Object.GetComponent<Door>().openDoor();
-        }
     }
 }
