@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerPrefs.SetFloat("level", PlayerPrefs.GetFloat("level") + 1);
-        Debug.Log(other.transform.name);
         SceneManager.LoadScene("BaseLevel");
     }
 }
