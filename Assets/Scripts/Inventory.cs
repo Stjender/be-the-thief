@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        EquippedItem = emptyItem;
         hotbarSlots = new List<GameObject>();
         InitializeHotbar();
         for (int i = 0; i < amountHotbarSlots; i++)
@@ -37,8 +38,7 @@ public class Inventory : MonoBehaviour
             tempSlot.transform.SetParent(hotbarSlotArea.transform);
             hotbarSlots.Add(tempSlot);
         }
-        currentSlot = hotbarSlotArea.transform.GetChild(0).gameObject;
-        EquippedItem = emptyItem;
+        currentSlot = hotbarSlotArea.transform.GetChild(0).gameObject;        
     }
 
     private void Update()

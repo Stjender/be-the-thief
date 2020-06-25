@@ -12,7 +12,6 @@ public enum ItemTypes
 }
 public class Item : MonoBehaviour
 {
-    private ItemUse itemUse;
     public int itemID;
     public string itemName;
     public ItemTypes itemType;

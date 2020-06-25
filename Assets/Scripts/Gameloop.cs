@@ -50,14 +50,14 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel1()
     {
-        GameObject obj = Objects.transform.FindChild("Credit Card").gameObject;
+        GameObject obj = Objects.transform.FindChild("creditcard").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = false;
     }
 
     void SetupLevel2()
     {
-        GameObject obj = Objects.transform.FindChild("Screwdriver").gameObject;
+        GameObject obj = Objects.transform.FindChild("screwdriver").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = true;
     }
