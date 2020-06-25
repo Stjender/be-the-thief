@@ -58,17 +58,12 @@ public class Gameloop : MonoBehaviour
             GameOver = true;
         }
 
-        if (Finnised)
-        {
-            string info = GetAllItemsCollected();
-            player.Hud.OpenInfoPanel(info);
-        }
-
         if (!Player.Hud.InfoButton.activeSelf)
         {
+            Debug.Log("YEs");
             TimeToGo -= Time.deltaTime;
             Player.Hud.TimeText.text = "Time: " + (Convert.ToInt32(TimeToGo)).ToString();
-            if (GameOver)
+            if (GameOver || Finnised)
             {
                 SceneManager.LoadScene("BaseLevel");
             }
@@ -180,18 +175,26 @@ public class Gameloop : MonoBehaviour
             glass.SetActive(true);
         }
     }
-    public string GetAllItemsCollected()
+    public void GetAllItemsCollected()
     {
         string itemstring = "";
+        int totalscore = 0;
+
         List<Item> allItems = new List<Item>();
         allItems.AddRange(GetAllItemsInSlot(Player.inventory.hotbarSlotArea.transform));
         allItems.AddRange(GetAllItemsInSlot(Player.inventory.inventorySlotArea.transform));
+
         foreach (var item in allItems)
         {
-            itemstring += item.itemName + " ";
+            itemstring += item.itemName + ": " + item.score + "\r\n";
+            totalscore += item.score;
         }
+        itemstring += "Time: " + Convert.ToInt32(TimeToGo) + "\n\r";
+        totalscore += Convert.ToInt32(TimeToGo);
+        itemstring += "\r\n Total score: " + totalscore;
+
+        Player.Hud.OpenInfoPanel(itemstring);
         Finnised = true;
-        return itemstring;
     }
 
     private List<Item> GetAllItemsInSlot(Transform slotArea)
@@ -200,7 +203,6 @@ public class Gameloop : MonoBehaviour
         for (int i = 0; i < slotArea.childCount; i++)
         {
             Item itemToCheck = slotArea.GetChild(i).GetComponent<Slot>().item;
-            Debug.Log(itemToCheck);
             if (itemToCheck != null)
             {
                 items.Add(itemToCheck);
