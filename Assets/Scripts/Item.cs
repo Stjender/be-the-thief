@@ -20,6 +20,7 @@ public class Item : MonoBehaviour
     public int itemSize;
     public bool equipped;
     public int hotbarID = -1;
+    public int score;
     public Animator animator;
 
     [HideInInspector]

@@ -260,7 +260,6 @@ public class Inventory : MonoBehaviour
                     secondSlot.SetItem(itemToSet);
 
                     EquipItem(currentSlot.GetComponent<Slot>().item);
-
                 }
                 DeselectAllSlots(hotbarSlotArea.transform);
                 DeselectAllSlots(inventorySlotArea.transform);

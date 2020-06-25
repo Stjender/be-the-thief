@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerPrefs.SetFloat("level", PlayerPrefs.GetFloat("level") + 1);
-        SceneManager.LoadScene("BaseLevel");
+        /*PlayerPrefs.SetFloat("level", PlayerPrefs.GetFloat("level") + 1);
+        SceneManager.LoadScene("BaseLevel");*/
+        gameloop.GetAllItemsCollected();
     }
 }
