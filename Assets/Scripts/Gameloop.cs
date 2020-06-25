@@ -22,7 +22,7 @@ public class Gameloop : MonoBehaviour
         }
 
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 2);
+        PlayerPrefs.SetFloat("level", 4);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
@@ -48,6 +48,14 @@ public class Gameloop : MonoBehaviour
 
             case 2:
                 SetupLevel2();
+
+                break;
+            case 3:
+                SetupLevel3();
+                break;
+            case 4:
+
+                SetupLevel4();
                 break;
 
             default:
@@ -71,7 +79,7 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel3()
     {
-        GameObject obj = Objects.transform.FindChild("Hammer").gameObject;
+        GameObject obj = Objects.transform.FindChild("hammer").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = true;
     }
