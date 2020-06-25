@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
 
     public void Update()
     {
-       
+
     }
 
     public void OnPickup()
@@ -60,21 +60,21 @@ public class Item : MonoBehaviour
     {
         if (Object.GetComponent<Door>() != null)
         {
-        if (itemType == ItemTypes.Tool)
-        {
-            if (!Object.GetComponent<Door>().open)
+            if (itemType == ItemTypes.Tool)
             {
-                if (animator != null)
+                if (!Object.GetComponent<Door>().open)
                 {
-                    animator.SetTrigger("activate");                    
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("activate");
+                    }
+                    Object.GetComponent<Door>().openDoor();
                 }
-                Object.GetComponent<Door>().openDoor();
+                else
+                {
+                    Object.GetComponent<Door>().openDoor();
+                }
             }
-            else
-            {
-                Object.GetComponent<Door>().openDoor();
-            }
-        }
         }
     }
 
@@ -82,10 +82,10 @@ public class Item : MonoBehaviour
     {
         if (itemName == "Apple")
         {
-        if (itemType == ItemTypes.Food)
-        {
+            if (itemType == ItemTypes.Food)
+            {
 
-        }
+            }
         }
     }
 }
