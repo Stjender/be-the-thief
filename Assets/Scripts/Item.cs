@@ -35,10 +35,7 @@ public class Item : MonoBehaviour
 
     public void Update()
     {
-        if (equipped)
-        {
-
-        }
+       
     }
 
     public void OnPickup()
@@ -50,11 +47,11 @@ public class Item : MonoBehaviour
     public void OnUse(GameObject Object)
     {
         itemUse = new ItemUse();
-        if (this.itemType == ItemTypes.Tool)
+        if (itemType == ItemTypes.Tool)
         {
             itemUse.UseTool(this, Object);
         }
-        if (this.itemType == ItemTypes.Food)
+        if (itemType == ItemTypes.Food)
         {
             itemUse.UseFood(this);
         }

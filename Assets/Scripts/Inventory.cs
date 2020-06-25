@@ -48,6 +48,13 @@ public class Inventory : MonoBehaviour
 
     private void CheckInput()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EquippedItem.GetComponent<Item>().itemName == "Hammer")
+            {
+                EquippedItem.GetComponent<Item>().animator.SetTrigger("strike");
+            }
+        }
         if (Input.GetKeyDown(dropBackpackKey))
         {
             RemoveBackPack();
@@ -105,7 +112,6 @@ public class Inventory : MonoBehaviour
                 {
                     EquippedItem = equipmentitem.gameObject;
                     equipmentitem.gameObject.SetActive(true);
-                    Destroy(EquippedItem.GetComponent<Rigidbody>());
                 }
             }
         }
