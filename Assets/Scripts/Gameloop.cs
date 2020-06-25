@@ -20,7 +20,7 @@ public class Gameloop : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 4);
+        PlayerPrefs.SetFloat("level", 1);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
