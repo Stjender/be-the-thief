@@ -18,6 +18,8 @@ public class Hud : MonoBehaviour
 
     public TextMeshProUGUI TimeText;
 
+    public TextMeshProUGUI ScoreText;
+
     void Start()
     {
 

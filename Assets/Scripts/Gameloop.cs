@@ -29,9 +29,11 @@ public class Gameloop : MonoBehaviour
         {
             car.SetActive(false);
         }
-        //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 1);
 
+        //Voor het testen!!!!!!
+        //PlayerPrefs.SetFloat("level", 1);
+
+        Player.Hud.ScoreText.text = PlayerPrefs.GetFloat("Score").ToString();
 
         if (PlayerPrefs.GetFloat("level") == 0)
         {
@@ -60,7 +62,6 @@ public class Gameloop : MonoBehaviour
 
         if (!Player.Hud.InfoButton.activeSelf)
         {
-            Debug.Log("YEs");
             TimeToGo -= Time.deltaTime;
             Player.Hud.TimeText.text = "Time: " + (Convert.ToInt32(TimeToGo)).ToString();
             if (GameOver || Finnised)
@@ -195,6 +196,9 @@ public class Gameloop : MonoBehaviour
 
         Player.Hud.OpenInfoPanel(itemstring);
         Finnised = true;
+
+        PlayerPrefs.SetFloat("Score", totalscore);
+        PlayerPrefs.SetFloat("level", PlayerPrefs.GetFloat("level") + 1);
     }
 
     private List<Item> GetAllItemsInSlot(Transform slotArea)
