@@ -2045,7 +2045,8 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 282aa52333e16c34f8862e2ae8a5e59b,
+        type: 3}
     - target: {fileID: 9065379405334443399, guid: 6055b1c2101f38442a8196a962b78ebc,
         type: 3}
       propertyPath: itemDescription
@@ -5736,7 +5737,7 @@ MonoBehaviour:
   itemID: 5
   itemName: Hammer
   itemType: 0
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: b0c793de5ecf4094ba455d9a5d1bebc0, type: 3}
   itemDescription: Hammer time!
   itemSize: 1
   equipped: 0
@@ -7848,7 +7849,8 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 282aa52333e16c34f8862e2ae8a5e59b,
+        type: 3}
     - target: {fileID: 9065379405334443399, guid: 6055b1c2101f38442a8196a962b78ebc,
         type: 3}
       propertyPath: itemDescription
@@ -9717,7 +9719,8 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 0148cdc7498934048a91f1b9cf445dcd,
+        type: 3}
     - target: {fileID: 3860704415785513454, guid: ad04ca2c7cc68d24aae1dfdf5642f350,
         type: 3}
       propertyPath: itemDescription
@@ -12947,7 +12950,7 @@ MonoBehaviour:
   itemID: 4
   itemName: Screwdriver
   itemType: 0
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 5357b52c3d31a2b41acb710513faf8f2, type: 3}
   itemDescription: It's a screwdriver
   itemSize: 1
   equipped: 0
@@ -15634,7 +15637,7 @@ MonoBehaviour:
   inventory: {fileID: 4085300}
   Hud: {fileID: 1966791957}
   PlayerCollider: {fileID: 1419064726}
-  gameloop: {fileID: 0}
+  gameloop: {fileID: 426511692}
 --- !u!23 &1419064730
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15871,7 +15874,8 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 8017d3e13583dca408c78551108bb5ae,
+        type: 3}
     - target: {fileID: 3507777152005171994, guid: 55568f2f17b47a647afd8fe724eede41,
         type: 3}
       propertyPath: itemDescription
@@ -16080,7 +16084,7 @@ MonoBehaviour:
   itemID: 3
   itemName: Credit Card
   itemType: 0
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: aac10916fb15fa04f9d1269221a18987, type: 3}
   itemDescription: It's a credit card.
   itemSize: 1
   equipped: 0
@@ -18081,7 +18085,8 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 0b29ff7ffcbd2c04fbf9606ec37a0c84,
+        type: 3}
     - target: {fileID: 5560540679452597181, guid: 3a6ed9a906fe962409d52393b35ef009,
         type: 3}
       propertyPath: itemDescription
@@ -18952,7 +18957,7 @@ MonoBehaviour:
   itemID: 11
   itemName: Laptop
   itemType: 3
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 3589f30942ae61d4abfa946afd916989, type: 3}
   itemDescription: It's a laptop!
   itemSize: 2
   equipped: 0
@@ -21109,7 +21114,8 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: e12544dedc7f7c547ac4a888bb738e1c,
+        type: 3}
     - target: {fileID: 7764492677392430463, guid: fc72a565c989fc543848c3f6ab6001bf,
         type: 3}
       propertyPath: itemDescription
@@ -27344,7 +27350,6 @@ GameObject:
   - component: {fileID: 6589209097594515806}
   - component: {fileID: 6589209097594416511}
   - component: {fileID: 6589209097594416513}
-  - component: {fileID: 6589209097594416512}
   m_Layer: 0
   m_Name: Audi R8
   m_TagString: Untagged
@@ -27365,22 +27370,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.1282854, y: 3.146325, z: 8.977409}
   m_Center: {x: 0.036179543, y: 1.5066543, z: -0.1744957}
---- !u!54 &6589209097594416512
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6589209097594416510}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &6589209097594416513
 BoxCollider:
   m_ObjectHideFlags: 0
