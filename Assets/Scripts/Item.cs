@@ -35,10 +35,7 @@ public class Item : MonoBehaviour
 
     public void Update()
     {
-        if (equipped)
-        {
-
-        }
+       
     }
 
     public void OnPickup()
@@ -49,14 +46,52 @@ public class Item : MonoBehaviour
 
     public void OnUse(GameObject Object)
     {
+<<<<<<< HEAD
+=======
         itemUse = new ItemUse();
-        if (this.itemType == ItemTypes.Tool)
+<<<<<<< HEAD
+>>>>>>> e1c192f755096b6cde23958306f517d00914df6f
+        if (itemType == ItemTypes.Tool)
         {
-            itemUse.UseTool(this, Object);
+            UseTool(Object);
         }
-        if (this.itemType == ItemTypes.Food)
+        if (itemType == ItemTypes.Food)
         {
-            itemUse.UseFood(this);
+            UseFood();
+        }
+    }
+
+    public void UseTool(GameObject Object)
+    {
+        if (Object.GetComponent<Door>() != null)
+=======
+        if (itemType == ItemTypes.Tool)
+>>>>>>> e1c192f755096b6cde23958306f517d00914df6f
+        {
+            if (!Object.GetComponent<Door>().open)
+            {
+                if (animator != null)
+                {
+                    animator.SetTrigger("activate");                    
+                }
+                Object.GetComponent<Door>().openDoor();
+            }
+            else
+            {
+                Object.GetComponent<Door>().openDoor();
+            }
+        }
+<<<<<<< HEAD
+    }
+
+    public void UseFood()
+    {
+        if (itemName == "Apple")
+=======
+        if (itemType == ItemTypes.Food)
+>>>>>>> e1c192f755096b6cde23958306f517d00914df6f
+        {
+
         }
     }
 }
