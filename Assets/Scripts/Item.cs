@@ -72,6 +72,7 @@ public class Item : MonoBehaviour
                     {
                         animator.SetTrigger("activate");
                     }
+                    Debug.Log(Object.GetComponent<Door>());
                     Object.GetComponent<Door>().openDoor();
                 }
                 else

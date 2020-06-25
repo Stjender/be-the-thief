@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
 
     public void openDoor()
     {
-        if (!open && !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening"))
+        if (!open && !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening") || doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("idle"))
         {
             doorAnimator.SetTrigger("openDoor");
             open = true;

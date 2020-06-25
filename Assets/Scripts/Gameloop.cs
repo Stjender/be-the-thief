@@ -30,7 +30,7 @@ public class Gameloop : MonoBehaviour
             car.SetActive(false);
         }
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 1);
+        PlayerPrefs.SetFloat("level", 2);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
