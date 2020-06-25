@@ -2056,6 +2056,11 @@ PrefabInstance:
       propertyPath: itemDescription
       value: It's an Ipad
       objectReference: {fileID: 0}
+    - target: {fileID: 9065379405334443399, guid: 6055b1c2101f38442a8196a962b78ebc,
+        type: 3}
+      propertyPath: score
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9065379405334443400, guid: 6055b1c2101f38442a8196a962b78ebc,
         type: 3}
       propertyPath: m_Name
@@ -9894,6 +9899,11 @@ PrefabInstance:
       propertyPath: itemDescription
       value: It's a Ipad, but red!
       objectReference: {fileID: 0}
+    - target: {fileID: 3860704415785513454, guid: ad04ca2c7cc68d24aae1dfdf5642f350,
+        type: 3}
+      propertyPath: score
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3860704415785513455, guid: ad04ca2c7cc68d24aae1dfdf5642f350, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ad04ca2c7cc68d24aae1dfdf5642f350, type: 3}
@@ -16056,6 +16066,11 @@ PrefabInstance:
       propertyPath: itemSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3507777152005171994, guid: 55568f2f17b47a647afd8fe724eede41,
+        type: 3}
+      propertyPath: score
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3507777152005171992, guid: 55568f2f17b47a647afd8fe724eede41, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 55568f2f17b47a647afd8fe724eede41, type: 3}
@@ -18284,6 +18299,11 @@ PrefabInstance:
       propertyPath: itemDescription
       value: It's a iphone 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5560540679452597181, guid: 3a6ed9a906fe962409d52393b35ef009,
+        type: 3}
+      propertyPath: score
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8381913668410481170, guid: 3a6ed9a906fe962409d52393b35ef009,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19154,7 +19174,7 @@ MonoBehaviour:
   itemSize: 2
   equipped: 0
   hotbarID: -1
-  score: 0
+  score: 200
   animator: {fileID: 0}
   EquippedItem: {fileID: 0}
   EquipmentManager: {fileID: 0}
@@ -21318,6 +21338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: itemSize
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764492677392430463, guid: fc72a565c989fc543848c3f6ab6001bf,
+        type: 3}
+      propertyPath: score
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7764492677392430468, guid: fc72a565c989fc543848c3f6ab6001bf,
         type: 3}
