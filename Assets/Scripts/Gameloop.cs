@@ -60,7 +60,8 @@ public class Gameloop : MonoBehaviour
 
         if (Finnised)
         {
-            //string info = 
+            string info = GetAllItemsCollected();
+            player.Hud.OpenInfoPanel(info);
         }
 
         if (!Player.Hud.InfoButton.activeSelf)
@@ -179,15 +180,18 @@ public class Gameloop : MonoBehaviour
             glass.SetActive(true);
         }
     }
-    public void GetAllItemsCollected()
+    public string GetAllItemsCollected()
     {
+        string itemstring = "";
         List<Item> allItems = new List<Item>();
         allItems.AddRange(GetAllItemsInSlot(Player.inventory.hotbarSlotArea.transform));
         allItems.AddRange(GetAllItemsInSlot(Player.inventory.inventorySlotArea.transform));
         foreach (var item in allItems)
         {
-            Debug.Log(item.itemName);
+            itemstring += item.itemName + " ";
         }
+        Finnised = true;
+        return itemstring;
     }
 
     private List<Item> GetAllItemsInSlot(Transform slotArea)
@@ -195,7 +199,7 @@ public class Gameloop : MonoBehaviour
         List<Item> items = new List<Item>();
         for (int i = 0; i < slotArea.childCount; i++)
         {
-            Item itemToCheck = slotArea.GetChild(i).GetComponent<Item>();
+            Item itemToCheck = slotArea.GetChild(i).GetComponent<Slot>().item;
             Debug.Log(itemToCheck);
             if (itemToCheck != null)
             {
