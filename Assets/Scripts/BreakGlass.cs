@@ -9,8 +9,6 @@ public class BreakGlass : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("test");
-        Debug.Log(collision.relativeVelocity);
         Destroy(gameObject);
         Instantiate(brokenObject, transform.position, transform.rotation);
         brokenObject.localScale = transform.localScale;

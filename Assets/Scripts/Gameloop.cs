@@ -8,12 +8,19 @@ public class Gameloop : MonoBehaviour
     public GameObject Objects;
     public GameObject Exit;
 
+    public GameObject[] windows;
     public PlayerController player;
     public Door Frontdoor;
 
     // Start is called before the first frame update
     void Start()
     {
+        windows = GameObject.FindGameObjectsWithTag("Glass2");
+        foreach (GameObject glass in windows)
+        {
+            glass.SetActive(false);
+        }
+
         //Voor het testen!!!!!!
         PlayerPrefs.SetFloat("level", 2);
 
@@ -60,6 +67,25 @@ public class Gameloop : MonoBehaviour
         GameObject obj = Objects.transform.FindChild("Screwdriver").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = true;
+    }
+
+    void SetupLevel3()
+    {
+        GameObject obj = Objects.transform.FindChild("Hammer").gameObject;
+        player.inventory.PickupItem(obj);
+        Frontdoor.lockedDoor = true;
+    }
+
+    void SetupLevel4()
+    {
+        foreach (GameObject glass in GameObject.FindGameObjectsWithTag("Glass1"))
+        {
+            glass.SetActive(false);
+        }
+        foreach (GameObject glass in GameObject.FindGameObjectsWithTag("Glass2"))
+        {
+            glass.SetActive(true);
+        }
     }
 
     void ResetScene()
