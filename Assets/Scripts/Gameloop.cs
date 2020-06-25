@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class Gameloop : MonoBehaviour
 {
     public GameObject Objects;
-    public GameObject Exit;    
+    public GameObject Exit;
 
-    public PlayerController player;
+    public PlayerController Player;
     public Door Frontdoor;
+    public Transform GameOverLocation;
 
-    private GameObject[] windows;
+    private GameObject[] Windows;
+    private GameObject[] PoliceCars;
     private bool GameOver = false;
     private bool Finnised = false;
     private float TimeToGo;
@@ -22,9 +24,13 @@ public class Gameloop : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-
+        PoliceCars = GameObject.FindGameObjectsWithTag("PoliceCar");
+        foreach (GameObject car in PoliceCars)
+        {
+            car.SetActive(false);
+        }
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 2);
+        PlayerPrefs.SetFloat("level", 1);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
@@ -43,24 +49,29 @@ public class Gameloop : MonoBehaviour
         {
             string info = "Je hebt er te lang over gedaan en de politie heeft je gepakt." + "\r\n" +
                             "Probeer het opnieuw";
-            player.Hud.OpenInfoPanel(info);
+            Player.Hud.OpenInfoPanel(info);
+            foreach (GameObject car in PoliceCars)
+            {
+                car.SetActive(true);
+            }
+            Player.transform.position = GameOverLocation.position;
             GameOver = true;
         }
 
-        if(Finnised)
+        if (Finnised)
         {
             //string info = 
         }
 
-        if (!player.Hud.InfoButton.activeSelf)
+        if (!Player.Hud.InfoButton.activeSelf)
         {
             TimeToGo -= Time.deltaTime;
-            player.Hud.TimeText.text = "Time: " + (Convert.ToInt32(TimeToGo)).ToString();
-            if(GameOver)
+            Player.Hud.TimeText.text = "Time: " + (Convert.ToInt32(TimeToGo)).ToString();
+            if (GameOver)
             {
                 SceneManager.LoadScene("BaseLevel");
             }
-        }        
+        }
     }
 
     public void LoadLevel(float currentLevel)
@@ -92,11 +103,11 @@ public class Gameloop : MonoBehaviour
     void SetupLevel1()
     {
         GameObject obj = Objects.transform.FindChild("hammer").gameObject;
-        player.inventory.PickupItem(obj);
+        Player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = false;
 
         string levelinfo = "Level 1: \r\n \r\n Manier van inbraak: Raam inslaan. \r\n Je hebt een hamer in bezit, probeer een raam in te slaan om in het huis te komen.";
-        player.Hud.OpenInfoPanel(levelinfo);
+        Player.Hud.OpenInfoPanel(levelinfo);
 
         TimeToGo = 300;
     }
@@ -106,18 +117,18 @@ public class Gameloop : MonoBehaviour
         HardenWindows();
         GameObject obj1 = Objects.transform.FindChild("hammer").gameObject;
         GameObject obj2 = Objects.transform.FindChild("creditcard").gameObject;
-        player.inventory.PickupItem(obj1);
-        player.inventory.PickupItem(obj2);
+        Player.inventory.PickupItem(obj1);
+        Player.inventory.PickupItem(obj2);
         Frontdoor.lockedDoor = false;
 
-        string levelinfo =  "Level 2:" + "\r\n" + "\r\n" +
+        string levelinfo = "Level 2:" + "\r\n" + "\r\n" +
                             "Voorkomen van raam inslag:" + "\r\n" +
                             "•    Leg kostbare apparatuur, zoals laptops en iPads, uit het zicht." + "\r\n" +
                             "•    Dubbelglas ruiten helpen tegen het inslaan. Ze zijn veel lastiger om in te slaan dan enkel glas ruiten." + "\r\n" +
                             "De eigenaar van het huis heeft dubbelglas gebruikt dit keer, dus je kunt niet meer dezelfde methode gebruiken." + "\r\n" +
                             "Nieuwe manier van inbraak: Flipperen." + "\r\n" +
                             "Probeer te flipperen om binnen te komen.";
-        player.Hud.OpenInfoPanel(levelinfo);
+        Player.Hud.OpenInfoPanel(levelinfo);
 
         TimeToGo = 300;
     }
@@ -128,19 +139,19 @@ public class Gameloop : MonoBehaviour
         GameObject obj1 = Objects.transform.FindChild("hammer").gameObject;
         GameObject obj2 = Objects.transform.FindChild("creditcard").gameObject;
         GameObject obj3 = Objects.transform.FindChild("screwdriver").gameObject;
-        player.inventory.PickupItem(obj1);
-        player.inventory.PickupItem(obj2);
-        player.inventory.PickupItem(obj3);
+        Player.inventory.PickupItem(obj1);
+        Player.inventory.PickupItem(obj2);
+        Player.inventory.PickupItem(obj3);
         Frontdoor.lockedDoor = true;
 
-        string levelinfo =  "Level 3:" + "\r\n" + "\r\n" +
+        string levelinfo = "Level 3:" + "\r\n" + "\r\n" +
                             "Voorkomen van flipperen:" + "\r\n" +
                             "•    Laat als het donker is en u niet thuis bent een lamp aan. Dan lijkt het alsof er iemand aanwezig is. Stel hiervoor bijvoorbeeld een automatische lichtschakelaar in." + "\r\n" +
                             "•    Sluit ramen en deuren goed af, ook als u maar even weg bent. Draai de deur ook altijd op slot." + "\r\n" +
                             "De eigenaar heeft dit keer zijn huis goed op slot gezet, je kunt dus dit keer niet meer flipperen." + "\r\n" +
                             "Nieuwe manier van inbraak: Cilinder afbreken van een deurslot." + "\r\n" +
                             "Probeer in te breken met de schroevendraaier.";
-        player.Hud.OpenInfoPanel(levelinfo);
+        Player.Hud.OpenInfoPanel(levelinfo);
 
         TimeToGo = 300;
     }
@@ -149,10 +160,10 @@ public class Gameloop : MonoBehaviour
     {
         HardenWindows();
 
-        string levelinfo =  "Level 4:" + "\r\n" + "\r\n" +
+        string levelinfo = "Level 4:" + "\r\n" + "\r\n" +
                             "Helaas, de eigenaar heeft zich nu volledig beveiligd tegen inbraak. " + "\r\n" +
                             "Je hebt dit keer alles bij je, kijk voor de zekerheid of je nog in kunt breken!";
-        player.Hud.OpenInfoPanel(levelinfo);
+        Player.Hud.OpenInfoPanel(levelinfo);
 
         TimeToGo = 300;
     }
@@ -163,16 +174,16 @@ public class Gameloop : MonoBehaviour
         {
             glass.SetActive(false);
         }
-        foreach (GameObject glass in windows)
+        foreach (GameObject glass in Windows)
         {
             glass.SetActive(true);
         }
     }
     public void GetAllItemsCollected()
-    {        
+    {
         List<Item> allItems = new List<Item>();
-        allItems.AddRange(GetAllItemsInSlot(player.inventory.hotbarSlotArea.transform));
-        allItems.AddRange(GetAllItemsInSlot(player.inventory.inventorySlotArea.transform));
+        allItems.AddRange(GetAllItemsInSlot(Player.inventory.hotbarSlotArea.transform));
+        allItems.AddRange(GetAllItemsInSlot(Player.inventory.inventorySlotArea.transform));
         foreach (var item in allItems)
         {
             Debug.Log(item.itemName);
@@ -180,7 +191,7 @@ public class Gameloop : MonoBehaviour
     }
 
     private List<Item> GetAllItemsInSlot(Transform slotArea)
-    {        
+    {
         List<Item> items = new List<Item>();
         for (int i = 0; i < slotArea.childCount; i++)
         {
@@ -188,7 +199,7 @@ public class Gameloop : MonoBehaviour
             Debug.Log(itemToCheck);
             if (itemToCheck != null)
             {
-                items.Add(itemToCheck);                
+                items.Add(itemToCheck);
             }
         }
         return items;
@@ -196,8 +207,8 @@ public class Gameloop : MonoBehaviour
 
     void DisableWindows()
     {
-        windows = GameObject.FindGameObjectsWithTag("Glass2");
-        foreach (GameObject glass in windows)
+        Windows = GameObject.FindGameObjectsWithTag("Glass2");
+        foreach (GameObject glass in Windows)
         {
             glass.SetActive(false);
         }

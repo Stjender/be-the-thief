@@ -9,6 +9,7 @@ TagManager:
   - InteractiveObject
   - Glass1
   - Glass2
+  - PoliceCar
   layers:
   - Default
   - TransparentFX
