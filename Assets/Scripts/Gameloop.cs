@@ -92,6 +92,7 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel3()
     {
+
         GameObject obj = Objects.transform.FindChild("hammer").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = true;
