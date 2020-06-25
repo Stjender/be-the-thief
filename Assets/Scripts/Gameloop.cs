@@ -24,7 +24,7 @@ public class Gameloop : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 1);
+        PlayerPrefs.SetFloat("level", 2);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
@@ -91,7 +91,7 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel1()
     {
-        GameObject obj = Objects.transform.FindChild("creditcard").gameObject;
+        GameObject obj = Objects.transform.FindChild("hammer").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = false;
 
@@ -103,9 +103,12 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel2()
     {
-        GameObject obj = Objects.transform.FindChild("screwdriver").gameObject;
-        player.inventory.PickupItem(obj);
-        Frontdoor.lockedDoor = true;
+        HardenWindows();
+        GameObject obj1 = Objects.transform.FindChild("hammer").gameObject;
+        GameObject obj2 = Objects.transform.FindChild("creditcard").gameObject;
+        player.inventory.PickupItem(obj1);
+        player.inventory.PickupItem(obj2);
+        Frontdoor.lockedDoor = false;
 
         string levelinfo =  "Level 2:" + "\r\n" + "\r\n" +
                             "Voorkomen van raam inslag:" + "\r\n" +
@@ -121,9 +124,13 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel3()
     {
-
-        GameObject obj = Objects.transform.FindChild("hammer").gameObject;
-        player.inventory.PickupItem(obj);
+        HardenWindows();
+        GameObject obj1 = Objects.transform.FindChild("hammer").gameObject;
+        GameObject obj2 = Objects.transform.FindChild("creditcard").gameObject;
+        GameObject obj3 = Objects.transform.FindChild("screwdriver").gameObject;
+        player.inventory.PickupItem(obj1);
+        player.inventory.PickupItem(obj2);
+        player.inventory.PickupItem(obj3);
         Frontdoor.lockedDoor = true;
 
         string levelinfo =  "Level 3:" + "\r\n" + "\r\n" +
@@ -140,14 +147,7 @@ public class Gameloop : MonoBehaviour
 
     void SetupLevel4()
     {
-        foreach (GameObject glass in GameObject.FindGameObjectsWithTag("Glass1"))
-        {
-            glass.SetActive(false);
-        }
-        foreach (GameObject glass in windows)
-        {
-            glass.SetActive(true);
-        }
+        HardenWindows();
 
         string levelinfo =  "Level 4:" + "\r\n" + "\r\n" +
                             "Helaas, de eigenaar heeft zich nu volledig beveiligd tegen inbraak. " + "\r\n" +
@@ -157,6 +157,17 @@ public class Gameloop : MonoBehaviour
         TimeToGo = 300;
     }
 
+    private void HardenWindows()
+    {
+        foreach (GameObject glass in GameObject.FindGameObjectsWithTag("Glass1"))
+        {
+            glass.SetActive(false);
+        }
+        foreach (GameObject glass in windows)
+        {
+            glass.SetActive(true);
+        }
+    }
     public void GetAllItemsCollected()
     {        
         List<Item> allItems = new List<Item>();
