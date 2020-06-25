@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
             tempSlot.transform.SetParent(hotbarSlotArea.transform);
             hotbarSlots.Add(tempSlot);
         }
-        currentSlot = hotbarSlotArea.transform.GetChild(0).gameObject;        
+        currentSlot = hotbarSlotArea.transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -120,16 +120,16 @@ public class Inventory : MonoBehaviour
 
     private void CheckHotbarInput()
     {
-        if(EquippedItem.GetComponent<Item>().itemSize < 2)
-        foreach (var key in hotbarcodes)
-        {
-            if (Input.GetKey(key))
+        if (EquippedItem.GetComponent<Item>().itemSize < 2)
+            foreach (var key in hotbarcodes)
             {
-                currentSlot = hotbarSlotArea.transform.GetChild(Convert.ToInt32(key.ToString().Replace("Alpha", "")) - 1).gameObject;
-                Item itemToEquip = currentSlot.GetComponent<Slot>().item;
-                EquipItem(itemToEquip);
+                if (Input.GetKey(key))
+                {
+                    currentSlot = hotbarSlotArea.transform.GetChild(Convert.ToInt32(key.ToString().Replace("Alpha", "")) - 1).gameObject;
+                    Item itemToEquip = currentSlot.GetComponent<Slot>().item;
+                    EquipItem(itemToEquip);
+                }
             }
-        }
     }
 
     private void CheckDrop()
@@ -177,27 +177,7 @@ public class Inventory : MonoBehaviour
                     gameobject.GetComponent<Door>().lockedDoor = false;
                 }
             }
-
-
-                /*if (gameobject.GetComponent<Door>().lockedDoor)
-                {
-                    if (EquippedItem.GetComponent<Item>().itemName != "Credit Card")
-                    {
-                        if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
-                        {
-                            EquippedItem.GetComponent<Item>().OnUse(gameobject);
-                        }
-                    }
-                }
-
-                else
-                {
-                    if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
-                    {
-                        EquippedItem.GetComponent<Item>().OnUse(gameobject);
-                    }
-                }*/
-            }
+        }
     }
     private void InitializeHotbar()
     {

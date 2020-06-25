@@ -8,27 +8,24 @@ public class Gameloop : MonoBehaviour
     public GameObject Objects;
     public GameObject Exit;
 
-    public GameObject[] windows;
+    private GameObject[] windows;
+
     public PlayerController player;
     public Door Frontdoor;
 
     // Start is called before the first frame update
     void Start()
     {
-        windows = GameObject.FindGameObjectsWithTag("Glass2");
-        foreach (GameObject glass in windows)
-        {
-            glass.SetActive(false);
-        }
-
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 4);
+        PlayerPrefs.SetFloat("level", 2);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
         {
             PlayerPrefs.SetFloat("level", 1);
         }
+
+        DisableWindows();
         LoadLevel(PlayerPrefs.GetFloat("level"));
     }
 
@@ -48,11 +45,12 @@ public class Gameloop : MonoBehaviour
 
             case 2:
                 SetupLevel2();
-
                 break;
+
             case 3:
                 SetupLevel3();
                 break;
+
             case 4:
 
                 SetupLevel4();
@@ -90,7 +88,7 @@ public class Gameloop : MonoBehaviour
         {
             glass.SetActive(false);
         }
-        foreach (GameObject glass in GameObject.FindGameObjectsWithTag("Glass2"))
+        foreach (GameObject glass in windows)
         {
             glass.SetActive(true);
         }
@@ -99,5 +97,14 @@ public class Gameloop : MonoBehaviour
     void ResetScene()
     {
         
+    }
+
+    void DisableWindows()
+    {
+        windows = GameObject.FindGameObjectsWithTag("Glass2");
+        foreach (GameObject glass in windows)
+        {
+            glass.SetActive(false);
+        }
     }
 }
