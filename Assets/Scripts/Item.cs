@@ -54,6 +54,10 @@ public class Item : MonoBehaviour
         {
             UseFood();
         }
+        else
+        {
+            UseItem(Object);
+        }
     }
 
     public void UseTool(GameObject Object)
@@ -75,6 +79,14 @@ public class Item : MonoBehaviour
                     Object.GetComponent<Door>().openDoor();
                 }
             }
+        }
+    }
+
+    public void UseItem(GameObject Object)
+    {
+        if (Object.GetComponent<Door>() != null)
+        {
+            Object.GetComponent<Door>().openDoor();
         }
     }
 
