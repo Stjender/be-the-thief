@@ -183,11 +183,11 @@ GameObject:
   - component: {fileID: 16939373}
   m_Layer: 9
   m_Name: Glass1 lv2
-  m_TagString: Untagged
+  m_TagString: Glass2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &16939372
 Transform:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16939371}
   m_LocalRotation: {x: -0, y: 1.4210851e-14, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.04, z: -0.0212}
+  m_LocalPosition: {x: 0.02, y: 0.00021, z: -0.0212}
   m_LocalScale: {x: 1, y: 1.8345488, z: 0.88708}
   m_Children: []
   m_Father: {fileID: 831519546}
@@ -232,7 +232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54c42249f342dd947a634f5ed8f3c51a, type: 2}
+  - {fileID: 2100000, guid: e7c8f918eb0c1c14fa8baffcf0cd5493, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4096,7 +4096,7 @@ PrefabInstance:
     - target: {fileID: 1833167060653454284, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.6945093
+      value: 3.7414293
       objectReference: {fileID: 0}
     - target: {fileID: 1833167060653454284, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
         type: 3}
@@ -4112,6 +4112,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Glass3 lv1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Glass1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d0d8d2cac9f3d488b758ab1866aa62, type: 3}
@@ -4479,6 +4489,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Glass2 lv1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Glass1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d0d8d2cac9f3d488b758ab1866aa62, type: 3}
@@ -7720,11 +7740,11 @@ GameObject:
   - component: {fileID: 976496580}
   m_Layer: 9
   m_Name: Glass4 lv2
-  m_TagString: Untagged
+  m_TagString: Glass2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &976496579
 Transform:
   m_ObjectHideFlags: 0
@@ -7734,7 +7754,7 @@ Transform:
   m_GameObject: {fileID: 976496578}
   m_LocalRotation: {x: 0.00000017881389, y: -0.000000052683475, z: 0.00000011590379,
     w: 1}
-  m_LocalPosition: {x: -3.17, y: -0.0408, z: -0.0208}
+  m_LocalPosition: {x: -3.17, y: -0.00059, z: -0.0208}
   m_LocalScale: {x: 1, y: 1.1551346, z: 0.8423774}
   m_Children: []
   m_Father: {fileID: 831519546}
@@ -7770,7 +7790,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54c42249f342dd947a634f5ed8f3c51a, type: 2}
+  - {fileID: 2100000, guid: e7c8f918eb0c1c14fa8baffcf0cd5493, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9025,6 +9045,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Glass1 lv1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Glass1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d0d8d2cac9f3d488b758ab1866aa62, type: 3}
@@ -10811,6 +10841,7 @@ MonoBehaviour:
   inventory: {fileID: 4085300}
   Hud: {fileID: 1966791957}
   PlayerCollider: {fileID: 1419064726}
+  gameloop: {fileID: 0}
 --- !u!23 &1419064730
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13783,11 +13814,11 @@ GameObject:
   - component: {fileID: 1845905227}
   m_Layer: 9
   m_Name: Glass3 lv2
-  m_TagString: Untagged
+  m_TagString: Glass2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1845905226
 Transform:
   m_ObjectHideFlags: 0
@@ -13796,7 +13827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845905225}
   m_LocalRotation: {x: -0, y: -0.00000010430813, z: 0.7071068, w: 0.70710677}
-  m_LocalPosition: {x: -2.45, y: -0.0241, z: -0.021}
+  m_LocalPosition: {x: -2.45, y: 0.01611, z: -0.021}
   m_LocalScale: {x: 0.015197766, y: 34.355167, z: 0.84263974}
   m_Children: []
   m_Father: {fileID: 831519546}
@@ -13832,7 +13863,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54c42249f342dd947a634f5ed8f3c51a, type: 2}
+  - {fileID: 2100000, guid: e7c8f918eb0c1c14fa8baffcf0cd5493, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14800,11 +14831,11 @@ GameObject:
   - component: {fileID: 1956223098}
   m_Layer: 9
   m_Name: Glass2 lv2
-  m_TagString: Untagged
+  m_TagString: Glass2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1956223097
 Transform:
   m_ObjectHideFlags: 0
@@ -14813,7 +14844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956223096}
   m_LocalRotation: {x: -0, y: -0.00000010430813, z: 0.7071068, w: 0.70710677}
-  m_LocalPosition: {x: -1.15, y: -0.0241, z: -0.021}
+  m_LocalPosition: {x: -1.15, y: 0.01611, z: -0.021}
   m_LocalScale: {x: 0.015197766, y: 34.355167, z: 0.84263974}
   m_Children: []
   m_Father: {fileID: 831519546}
@@ -14849,7 +14880,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54c42249f342dd947a634f5ed8f3c51a, type: 2}
+  - {fileID: 2100000, guid: e7c8f918eb0c1c14fa8baffcf0cd5493, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20207,6 +20238,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Glass4 lv1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Glass1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834981574758577727, guid: 58d0d8d2cac9f3d488b758ab1866aa62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d0d8d2cac9f3d488b758ab1866aa62, type: 3}

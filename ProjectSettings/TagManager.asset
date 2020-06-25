@@ -7,6 +7,8 @@ TagManager:
   - EquipManager
   - Backpack
   - InteractiveObject
+  - Glass1
+  - Glass2
   layers:
   - Default
   - TransparentFX
