@@ -75,10 +75,6 @@ public class ObjectCheck : MonoBehaviour
             {
                 player.inventory.AddBackpack(obj);
             }
-            else if (obj.tag == interactiveObjectTag && obj.GetComponent<Door>().lockedDoor == false)
-            {
-                obj.GetComponent<Door>().openDoor();
-            }
             else if (obj.tag == interactiveObjectTag)
             {
                 player.inventory.InteractWithObject(obj);

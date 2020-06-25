@@ -147,9 +147,13 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKey(interactObjectButton) && EquippedItem != null)
         {
-            if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
+            if (EquippedItem.GetComponent<Item>().itemName != "Credit Card")
             {
-                EquippedItem.GetComponent<Item>().OnUse(gameobject);
+                Debug.Log(EquippedItem.GetComponent<Item>().itemName);
+                if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
+                {
+                    EquippedItem.GetComponent<Item>().OnUse(gameobject);
+                }
             }
         }
     }
