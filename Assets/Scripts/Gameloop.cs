@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class Gameloop : MonoBehaviour
 {
     public GameObject Objects;
-    public GameObject Exit;
-
-    private GameObject[] windows;
+    public GameObject Exit;    
 
     public PlayerController player;
     public Door Frontdoor;
+
+    private GameObject[] windows;
+    private float TimeToGo;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,7 @@ public class Gameloop : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 4);
+        PlayerPrefs.SetFloat("level", 1);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
@@ -35,7 +37,22 @@ public class Gameloop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!player.Hud.InfoButton.activeSelf)
+        {
+            TimeToGo -= Time.deltaTime;
+            player.Hud.TimeText.text = TimeToGo;
+        }
 
+        if (TimeToGo < 0)
+        {
+            string info = "Je hebt er te lang over gedaan en de politie heeft je gepakt." + "\r\n" +
+                            "Probeer het opnieuw";
+            player.Hud.OpenInfoPanel(info);
+            if (!player.Hud.InfoButton.activeSelf)
+            {
+                SceneManager.LoadScene("BaseLevel");
+            }
+        }
     }
 
     public void LoadLevel(float currentLevel)
@@ -72,6 +89,8 @@ public class Gameloop : MonoBehaviour
 
         string levelinfo = "Level 1: \r\n \r\n Manier van inbraak: Raam inslaan. \r\n Je hebt een hamer in bezit, probeer een raam in te slaan om in het huis te komen.";
         player.Hud.OpenInfoPanel(levelinfo);
+
+        TimeToGo = 300;
     }
 
     void SetupLevel2()
@@ -88,6 +107,8 @@ public class Gameloop : MonoBehaviour
                             "Nieuwe manier van inbraak: Flipperen." + "\r\n" +
                             "Probeer te flipperen om binnen te komen.";
         player.Hud.OpenInfoPanel(levelinfo);
+
+        TimeToGo = 300;
     }
 
     void SetupLevel3()
@@ -105,6 +126,8 @@ public class Gameloop : MonoBehaviour
                             "Nieuwe manier van inbraak: Cilinder afbreken van een deurslot." + "\r\n" +
                             "Probeer in te breken met de schroevendraaier.";
         player.Hud.OpenInfoPanel(levelinfo);
+
+        TimeToGo = 300;
     }
 
     void SetupLevel4()
@@ -122,11 +145,8 @@ public class Gameloop : MonoBehaviour
                             "Helaas, de eigenaar heeft zich nu volledig beveiligd tegen inbraak. " + "\r\n" +
                             "Je hebt dit keer alles bij je, kijk voor de zekerheid of je nog in kunt breken!";
         player.Hud.OpenInfoPanel(levelinfo);
-    }
 
-    void ResetScene()
-    {
-
+        TimeToGo = 300;
     }
 
     void DisableWindows()
