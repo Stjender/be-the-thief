@@ -10,12 +10,12 @@ public class Door : MonoBehaviour
 
     public void openDoor()
     {
-        if (!open && !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("closing") || !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening"))
+        if (!open && !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening"))
         {
             doorAnimator.SetTrigger("openDoor");
             open = true;
         }
-        else if(!doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("closing") || !doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("opening"))
+        else if(!doorAnimator.GetCurrentAnimatorStateInfo(0).IsTag("closing"))
         {
             doorAnimator.ResetTrigger("openDoor");
             open = false;
