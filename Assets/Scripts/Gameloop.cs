@@ -14,6 +14,7 @@ public class Gameloop : MonoBehaviour
 
     private GameObject[] windows;
     private bool GameOver = false;
+    private bool Finnised = false;
     private float TimeToGo;
 
 
@@ -44,6 +45,11 @@ public class Gameloop : MonoBehaviour
                             "Probeer het opnieuw";
             player.Hud.OpenInfoPanel(info);
             GameOver = true;
+        }
+
+        if(Finnised)
+        {
+            //string info = 
         }
 
         if (!player.Hud.InfoButton.activeSelf)
@@ -149,6 +155,32 @@ public class Gameloop : MonoBehaviour
         player.Hud.OpenInfoPanel(levelinfo);
 
         TimeToGo = 300;
+    }
+
+    public void GetAllItemsCollected()
+    {        
+        List<Item> allItems = new List<Item>();
+        allItems.AddRange(GetAllItemsInSlot(player.inventory.hotbarSlotArea.transform));
+        allItems.AddRange(GetAllItemsInSlot(player.inventory.inventorySlotArea.transform));
+        foreach (var item in allItems)
+        {
+            Debug.Log(item.itemName);
+        }
+    }
+
+    private List<Item> GetAllItemsInSlot(Transform slotArea)
+    {        
+        List<Item> items = new List<Item>();
+        for (int i = 0; i < slotArea.childCount; i++)
+        {
+            Item itemToCheck = slotArea.GetChild(i).GetComponent<Item>();
+            Debug.Log(itemToCheck);
+            if (itemToCheck != null)
+            {
+                items.Add(itemToCheck);                
+            }
+        }
+        return items;
     }
 
     void DisableWindows()
