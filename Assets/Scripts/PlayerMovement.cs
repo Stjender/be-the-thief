@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!transform.GetComponent<PlayerController>().inventory.inventorySlotArea.gameObject.activeSelf)
+        if (!transform.GetComponent<PlayerController>().inventory.inventorySlotArea.gameObject.activeSelf && !transform.GetComponent<PlayerController>().Hud.InfoButton.activeSelf)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 

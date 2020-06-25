@@ -13,6 +13,8 @@ public class Hud : MonoBehaviour
 
     public string DefaultInteractionText;
 
+    public GameObject InfoButton;
+
     void Start()
     {
 
@@ -37,5 +39,18 @@ public class Hud : MonoBehaviour
     public void CloseMessagePanel()
     {
         MessagePanel.SetActive(false);
+    }
+
+    public void OpenInfoPanel(string levelInfo)
+    {
+        Cursor.lockState = CursorLockMode.None;
+        //InfoButton.GetComponent<Text>().text = levelInfo;
+        InfoButton.SetActive(true);
+    }
+
+    public void CloseInfoPanel()
+    {
+        InfoButton.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

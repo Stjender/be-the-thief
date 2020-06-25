@@ -18,7 +18,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!playerBody.GetComponent<PlayerController>().inventory.inventorySlotArea.gameObject.activeSelf)
+        if (!playerBody.GetComponent<PlayerController>().inventory.inventorySlotArea.gameObject.activeSelf && !playerBody.GetComponent<PlayerController>().Hud.InfoButton.activeSelf)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

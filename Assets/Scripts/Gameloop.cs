@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,8 +17,10 @@ public class Gameloop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         //Voor het testen!!!!!!
-        PlayerPrefs.SetFloat("level", 2);
+        PlayerPrefs.SetFloat("level", 1);
 
 
         if (PlayerPrefs.GetFloat("level") == 0)
@@ -66,6 +69,10 @@ public class Gameloop : MonoBehaviour
         GameObject obj = Objects.transform.FindChild("creditcard").gameObject;
         player.inventory.PickupItem(obj);
         Frontdoor.lockedDoor = false;
+
+        string levelinfo = "Level 1:@ Manier van inbraak: Raam inslaan.@ Je hebt een hamer in bezit, probeer een raam in te slaan om in het huis te komen.";
+        levelinfo.Replace("@", "@" + Environment.NewLine);
+        player.Hud.OpenInfoPanel(levelinfo);
     }
 
     void SetupLevel2()
