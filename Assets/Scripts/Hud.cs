@@ -16,6 +16,8 @@ public class Hud : MonoBehaviour
 
     public GameObject InfoButton;
 
+    public TextMeshProUGUI TimeText;
+
     void Start()
     {
 

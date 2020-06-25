@@ -13,6 +13,7 @@ public class Gameloop : MonoBehaviour
     public Door Frontdoor;
 
     private GameObject[] windows;
+    private bool GameOver = false;
     private float TimeToGo;
 
 
@@ -37,22 +38,23 @@ public class Gameloop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!player.Hud.InfoButton.activeSelf)
-        {
-            TimeToGo -= Time.deltaTime;
-            player.Hud.TimeText.text = TimeToGo;
-        }
-
-        if (TimeToGo < 0)
+        if (TimeToGo < 0 && !GameOver)
         {
             string info = "Je hebt er te lang over gedaan en de politie heeft je gepakt." + "\r\n" +
                             "Probeer het opnieuw";
             player.Hud.OpenInfoPanel(info);
-            if (!player.Hud.InfoButton.activeSelf)
+            GameOver = true;
+        }
+
+        if (!player.Hud.InfoButton.activeSelf)
+        {
+            TimeToGo -= Time.deltaTime;
+            player.Hud.TimeText.text = "Time: " + (Convert.ToInt32(TimeToGo)).ToString();
+            if(GameOver)
             {
                 SceneManager.LoadScene("BaseLevel");
             }
-        }
+        }        
     }
 
     public void LoadLevel(float currentLevel)
