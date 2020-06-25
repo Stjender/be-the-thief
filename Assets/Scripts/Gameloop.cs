@@ -61,7 +61,7 @@ public class Gameloop : MonoBehaviour
         if (Finnised)
         {
             string info = GetAllItemsCollected();
-            player.Hud.OpenInfoPanel(info);
+            Player.Hud.OpenInfoPanel(info);
         }
 
         if (!Player.Hud.InfoButton.activeSelf)
