@@ -65,7 +65,7 @@ public class ObjectCheck : MonoBehaviour
     }
     public void CheckInput(GameObject obj)
     {
-        if (Input.GetKey(UseKey))
+        if (Input.GetKeyDown(UseKey))
         {
             if (obj.layer == itemlayer)
             {

@@ -5,47 +5,65 @@ using UnityEngine.SceneManagement;
 
 public class Gameloop : MonoBehaviour
 {
-    private int currentLevel = 1;
+    public GameObject Objects;
+    public GameObject Exit;
+
+    public PlayerController player;
+    public Door Frontdoor;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetupLevel1();
+        //Voor het testen!!!!!!
+        PlayerPrefs.SetFloat("level", 2);
+
+
+        if (PlayerPrefs.GetFloat("level") == 0)
+        {
+            PlayerPrefs.SetFloat("level", 1);
+        }
+        LoadLevel(PlayerPrefs.GetFloat("level"));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void NextLevel()
+    public void LoadLevel(float currentLevel)
     {
-        currentLevel++;
         switch (currentLevel)
         {
+            case 1:
+                SetupLevel1();
+                break;
+
             case 2:
                 SetupLevel2();
                 break;
 
-
             default:
                 break;
         }
-    }
-
-    void ResetScene()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
+    }    
 
     void SetupLevel1()
     {
-
+        GameObject obj = Objects.transform.FindChild("Credit Card").gameObject;
+        player.inventory.PickupItem(obj);
+        Frontdoor.lockedDoor = false;
     }
 
     void SetupLevel2()
     {
+        GameObject obj = Objects.transform.FindChild("Screwdriver").gameObject;
+        player.inventory.PickupItem(obj);
+        Frontdoor.lockedDoor = true;
+    }
 
+    void ResetScene()
+    {
+        
     }
 }

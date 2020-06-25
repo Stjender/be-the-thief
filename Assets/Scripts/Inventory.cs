@@ -48,6 +48,13 @@ public class Inventory : MonoBehaviour
 
     private void CheckInput()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EquippedItem.GetComponent<Item>().itemName == "Hammer")
+            {
+                EquippedItem.GetComponent<Item>().animator.SetTrigger("strike");
+            }
+        }
         if (Input.GetKeyDown(dropBackpackKey))
         {
             RemoveBackPack();
@@ -96,6 +103,7 @@ public class Inventory : MonoBehaviour
         if (EquippedItem != null || item == null)
         {
             EquippedItem.SetActive(false);
+            EquippedItem = emptyItem;
         }
         if (item != null)
         {
@@ -105,7 +113,6 @@ public class Inventory : MonoBehaviour
                 {
                     EquippedItem = equipmentitem.gameObject;
                     equipmentitem.gameObject.SetActive(true);
-                    Destroy(EquippedItem.GetComponent<Rigidbody>());
                 }
             }
         }
@@ -113,6 +120,7 @@ public class Inventory : MonoBehaviour
 
     private void CheckHotbarInput()
     {
+        if(EquippedItem.GetComponent<Item>().itemSize < 2)
         foreach (var key in hotbarcodes)
         {
             if (Input.GetKey(key))
@@ -145,26 +153,51 @@ public class Inventory : MonoBehaviour
     }
     public void InteractWithObject(GameObject gameobject)
     {
-        if (Input.GetKey(interactObjectButton) && EquippedItem != null)
+        if (EquippedItem != null)
         {
-            if (gameobject.GetComponent<Door>().lockedDoor)
+            if (!gameobject.GetComponent<Door>().lockedDoor)
             {
-                if (EquippedItem.GetComponent<Item>().itemName != "Credit Card")
+                if (gameobject.GetComponent<Door>().name.Contains("Frontdoor"))
+                {
+                    if (EquippedItem.GetComponent<Item>().itemName == "Credit Card")
+                    {
+                        EquippedItem.GetComponent<Item>().OnUse(gameobject);
+                    }
+                }
+                else
+                {
+                    EquippedItem.GetComponent<Item>().OnUse(gameobject);
+                }
+            }
+            else
+            {
+                if (EquippedItem.GetComponent<Item>().itemName == "Screwdriver")
+                {
+                    EquippedItem.GetComponent<Item>().OnUse(gameobject);
+                    gameobject.GetComponent<Door>().lockedDoor = false;
+                }
+            }
+
+
+                /*if (gameobject.GetComponent<Door>().lockedDoor)
+                {
+                    if (EquippedItem.GetComponent<Item>().itemName != "Credit Card")
+                    {
+                        if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
+                        {
+                            EquippedItem.GetComponent<Item>().OnUse(gameobject);
+                        }
+                    }
+                }
+
+                else
                 {
                     if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
                     {
                         EquippedItem.GetComponent<Item>().OnUse(gameobject);
                     }
-                }
+                }*/
             }
-            else
-            {
-                if (EquippedItem.GetComponent<Item>().itemType == ItemTypes.Tool)
-                {
-                    EquippedItem.GetComponent<Item>().OnUse(gameobject);
-                }
-            }
-        }
     }
     private void InitializeHotbar()
     {
@@ -229,7 +262,6 @@ public class Inventory : MonoBehaviour
     {
         if (inventorySlotArea.gameObject.activeSelf)
         {
-
             List<Slot> selectedSlots = new List<Slot>();
 
             List<Slot> returnedHotberSlots = GetSelectedSlots(hotbarSlotArea.transform);

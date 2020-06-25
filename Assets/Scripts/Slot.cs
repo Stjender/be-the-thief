@@ -31,7 +31,6 @@ public class Slot : MonoBehaviour
         ShowItemInSlot();
         if (itemToSet != null)
         {
-            Debug.Log(itemToSet.itemName);
             itemToSet.transform.SetParent(transform);
         }
     }
